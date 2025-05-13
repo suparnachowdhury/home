@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Suparna Chowdhury</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+				<!-- Header -->
+		<section id="header">
+			<!-- Ribbon inserted at the top -->
+			<div class="header-ribbon">
+				<div class="ribbon-wrapper">
+					<a href="index.html" class="logo-link">
+						<img alt="" src="images/profile_pic.jpg" class="ribbon-img">
+						<div class="ribbon-text">
+							<div class="name">Suparna Chowdhury</div>
+							<div class="title">Data & BI Consultant</div>
+						</div>
+					</a>
+		
+					<nav class="ribbon-nav">
+						<a href="index.html" class="ribbon-link">Home</a>
+						<a href="#resume" class="ribbon-link">Resume</a>
+						<a href="portfolio.html" class="ribbon-link">Portfolio</a>
+						<a href="https://suparnachowdhury.medium.com/" class="ribbon-link">Blog</a>
+						<a href="resources.html" class="ribbon-link">Resources</a>
+						<a href="https://linkedin.com/in/yourprofile" target="_blank" class="ribbon-linkedin">
+							<img src="images/InBug-Black.png" alt="LinkedIn">
+						  </a>
+						<a href="#" class="ribbon-cta">
+							<img src="images/profile_pic.jpg" alt="" class="ribbon-img">
+							<div>Let's Talk</div>
+						</a>
+					</nav>					
+				</div>
+			</div>	
+		</section>
+
+			<!-- Main -->
+				<section id="main" class="container">
+					
+					<div class="box">
+						
+						<h1>Projects</h1>
+						
+						<section class="container">
+							<div id="sql-user-journey" class="row">
+							<div class="row-6 row-12-mobilep">
+								<h2>Click to Conversion: Tracking the Paid User Journey</h2>
+							</div>
+							<div class="row-6 row-12-mobilep">
+								<p>This SQL-based project investigates the behavioral patterns of users who converted to paid subscriptions during Q1 2023 on an online education platform. 
+						By integrating and analyzing large-scale web interaction data (front_interactions), user session logs (front_visitors), and purchase records (student_purchases), 
+						I mapped each user's journey from initial site visits to their eventual subscription.	
+						</p>
+						<p>
+							Using SQL, we focused on users who made their first paid purchase within the Q1 2023 timeframe. For this cohort, we reconstructed session paths by concatenating page transitions, effectively visualizing the sequence of pages visited prior to conversion. This process allowed us to identify common user flows and critical conversion pathways.
+						</p>
+								<span class="image featured"><img src="images/projects/user_journey_query.png" alt="" /></span>
+
+						<p>
+							The results provide insights into which page sequences—such as visits to the "Courses", "Pricing", or "Checkout" pages—most frequently preceded a successful conversion.
+						</p>
+						<span class="image featured"><img src="images/projects/user_journey_results.png" alt="" /></span></br></br></br>
+
+							</div>
+							<ul class="actions special">
+									<li><a href="https://github.com/suchow07/User-Journey-SQL-Project/blob/main/User_Journey_Project.sql" 
+										class="custom-button alt">View on GitHub</a></li>
+								</ul>
+						</div>
+						</section>
+						<section class="container">
+							<div id="ml-breast_cancer" class="row">
+							<div class="row-6 row-12-mobilep">
+								<h2>Feature Selection and Classification Models for Early Breast Cancer Detection</h2>
+							</div>
+							<div class="row-6 row-12-mobilep">
+								<p>									In this analysis, we used the Breast Cancer Wisconsin dataset to identify relevant features for classification and assess the performance of multiple machine learning models.	
+						</p><p>Initial exploration revealed that features like texture_mean, radius_mean, and area_mean showed clear separation in medians between malignant and benign tumors, making them informative for classification.
+
+Features such as symmetry_mean and fractal_dimension_mean, which lacked distinguishable median differences, were considered non-informative and dropped.
+
+A correlation matrix helped identify highly correlated feature groups. To reduce redundancy, only one representative feature was retained from each group (e.g., area_mean from the set ['radius_mean', 'perimeter_mean', 'area_mean']).
+						</p>
+						<p>
+							<h4>Model Training and Evaluation:</h4>
+
+    Data was split into 80% training and 20% test sets. Three models were trained:
+							<ul style="list-style-type: disc; padding-left: 20px;">
+    <li>Logistic Regression: Accuracy = 96.49%</li>
+    <li>K-Nearest Neighbors (KNN): Accuracy = 94.74%</li>
+    <li>Support Vector Classifier (SVC): Accuracy = 96.49%</li>
+</ul>      
+								
+			<div>
+				Feature selection based on visual and statistical analysis improved model efficiency without compromising accuracy. Logistic Regression and SVC are strong candidates for this classification task.
+							The results indicate that the selected features significantly enhance the model's ability to distinguish between malignant and benign tumors, with Logistic Regression and SVC achieving the highest accuracy rates.
+			</div></br></br>
+
+							</div>
+							<ul class="actions special">
+									<li>
+										<a 
+										href="https://github.com/suchow07/machine-learning-projects/blob/main/Breast_cancer_prediction.ipynb" 
+										class="custom-button alt">View on GitHub</a></li>
+								</ul>
+						</div>
+						</section>
+
+						<section class="container">
+							<div id="ml-breast_cancer" class="row">
+							<div class="row-6 row-12-mobilep">
+								<h2>Click to Conversion: Tracking the Paid User Journey</h2>
+							</div>
+							<div class="row-6 row-12-mobilep">
+								<p>
+						</p>										
+</p>
+								<span class="image featured"><img src="images/projects/user_journey_query.png" alt="" /></span>
+
+						<p>
+							The results provide insights into which page sequences—such as visits to the "Courses", "Pricing", or "Checkout" pages—most frequently preceded a successful conversion.
+						</p>
+						<span class="image featured"><img src="images/projects/user_journey_results.png" alt="" /></span></br>
+
+							</div>
+						</div>
+						</section>
+
+						
+					</div>
+				</section>
+
+		
+
+		</div>
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+						<li><a href="#" class="icon brands fa-google-plus"><span class="label">Google+</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
