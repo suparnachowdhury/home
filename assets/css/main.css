@@ -1284,10 +1284,18 @@ header.major p {
   gap: 20px;
 }
 
-@media (min-width: 768px) {
-    .grid-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
+/* Tablet view: 2 columns */
+@media screen and (max-width: 980px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Mobile view: 1 column */
+@media screen and (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 .interest-item {
