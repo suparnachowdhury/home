@@ -26,16 +26,17 @@
 							
 						</div>
 					</a>
+					<div class="menu-button">
+    <button type="button">Menu</button>
+</div>
+		
 		
 					<nav class="ribbon-nav">
 						<a href="index.html" class="ribbon-link">Home</a>
-						<a href="index.html#resume" class="ribbon-link">Resume</a>
+						<a href="resume.html" class="ribbon-link">About Me</a>
 						<a href="portfolio.html" class="ribbon-link">Portfolio</a>
-						<a href="https://suparnachowdhury.medium.com/" target="_blank" class="ribbon-link">Blog</a>
 						<a href="resources.html" class="ribbon-link">Resources</a>
-						<a href="https://linkedin.com/in/suparna-chowdhury" target="_blank" class="ribbon-linkedin">
-							<img src="images/logo/linkedIn_logo.png" alt="LinkedIn">
-						  </a>
+						<a href="https://suparnachowdhury.medium.com/" target="_blank" class="ribbon-link">Blog</a>
 						<a href="https://linkedin.com/in/suparna-chowdhury" target="_blank" class="ribbon-cta">
 							<img src="images/profile_pic.jpg" alt="" class="ribbon-img">
 							<div>Let's Connect</div>
@@ -43,7 +44,13 @@
 					</nav>
 				</div>
 			</div>
-		
+		<header class="major no-line">
+				
+					 <h1 class="h1 header_main">
+  <span>Porfolio</span><br />
+  <span class="h1-color">Machine Learning & Analytics Projects</span>
+</h1>	
+		</header>
 	
 		
 
@@ -56,7 +63,7 @@
 
 				<!-- Two -->
 					<section>
-						<h2>Portfolio</h2>
+						
 						<div class="portfolio-row">
 							
 							<article class="col-6 col-12-xsmall work-item">
@@ -115,7 +122,7 @@
 			<!-- Footer -->
 				<footer id="footer">
 					<ul class="icons">
-						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://x.com/DataSapient" class="icon brands fa-x-twitter"><span class="label">Twitter</span></a></li>
 						<!--<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li> -->
 						<li><a href="https://www.instagram.com/data_sapient/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 					
@@ -130,6 +137,15 @@
 
 
 		<!-- Scripts -->
+		 <script>
+		const menuButton = document.querySelector('.menu-button');
+		const ribbonNav = document.querySelector('.ribbon-nav');
+		
+		menuButton.addEventListener('click', () => {
+			menuButton.classList.toggle('open');
+			ribbonNav.classList.toggle('show');
+		});
+		</script> 
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.poptrox.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>

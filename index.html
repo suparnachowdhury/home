@@ -31,26 +31,20 @@
 		
 					
 					<div class="menu-button">
-						<button type="button" >
-							<span></span>
-							<span></span>
-							<span></span>
-							</button>
-					</div>
+    <button type="button">Menu</button>
+</div>
 		
 					<nav class="ribbon-nav">
 						<a href="index.html" class="ribbon-link">Home</a>
-						<a href="#resume" class="ribbon-link">Resume</a>
+						<a href="resume.html" class="ribbon-link">About Me</a>
 						<a href="portfolio.html" class="ribbon-link">Portfolio</a>
-						<a href="https://suparnachowdhury.medium.com/" target="_blank" class="ribbon-link">Blog</a>
 						<a href="resources.html" class="ribbon-link">Resources</a>
-						<a href="https://linkedin.com/in/suparna-chowdhury" target="_blank" class="ribbon-linkedin">
-							<img src="images/logo/linkedIn_logo.png" alt="LinkedIn">
-						  </a>
+						<a href="https://suparnachowdhury.medium.com/" target="_blank" class="ribbon-link">Blog</a>
 						<a href="https://linkedin.com/in/suparna-chowdhury" target="_blank" class="ribbon-cta">
 							<img src="images/profile_pic.jpg" alt="" class="ribbon-img">
 							<div>Let's Connect</div>
 						</a>
+						
 					</nav>
 				</div>
 			</div>
@@ -69,6 +63,7 @@
     <a href="portfolio.html" class="cta__secondary w-inline-block">
       <div class="cta-text">Portfolio</div>
     </a>
+	
   </div></li>
 					</ul>
 				</div>
@@ -77,7 +72,7 @@
 		
 			<div class="hero__portfolio">
   
-  <div class="hero__portfolio-track">
+  <div class="hero__portfolio-content">
     <img src="images/pic01.png" alt="" class="hero__portfolio-img" loading="lazy">
     <img src="images/pic02.png" alt="" class="hero__portfolio-img" loading="lazy">
     <img src="images/pic03.png" alt="" class="hero__portfolio-img" loading="lazy">
@@ -88,30 +83,7 @@
 </div>
 			  
 		</section>
-		<script>
-const portfolio = document.querySelector('.hero__portfolio');
-const content = document.querySelector('.hero__portfolio-content');
-const images = document.querySelectorAll('.hero__portfolio-img');
-
-// Example: Scroll to the next image every 3 seconds (basic auto-scroll)
-let currentIndex = 0;
-const scrollInterval = 3000; // milliseconds
-
-function scrollToNext() {
-    if (images.length > 0) {
-        currentIndex = (currentIndex + 1) % images.length;
-        const scrollTo = images[currentIndex].offsetLeft;
-        portfolio.scrollTo({
-            left: scrollTo,
-            behavior: 'smooth'
-        });
-    }
-}
-
-
-
-
-		  </script>
+		
 		  
 		<script>
 		const menuButton = document.querySelector('.menu-button');
@@ -420,7 +392,7 @@ Efficient face recognition using local derivative pattern and shifted phase-enco
 	<!-- Footer -->
 				<footer id="footer">
 					<ul class="icons">
-						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://x.com/DataSapient" class="icon brands fa-x-twitter"><span class="label">Twitter</span></a></li>
 						<!--<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li> -->
 						<li><a href="https://www.instagram.com/data_sapient/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 					
