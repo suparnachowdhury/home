@@ -855,7 +855,40 @@ header.major p {
 			border-radius: 5px;
 			background-color: #e0f7f5;
 		}
-		
+       .portfolio-header {
+		margin: 15px;
+			
+    		display: flex;               
+    		justify-content: center;  }
+
+		.portfolio-header span {
+			font-size: 1.2rem; 
+			color: #00a699;
+			font-weight: bold;
+			padding: 5px 10px;
+			border-radius: 5px;
+			background-color: #e0f7f5;
+		}
+		.portfolio-item {
+			display: flex;
+			align-items: center;
+			gap: 5px;
+			color: #444;
+			font-size: 0.95em;
+		}
+		.portfolio-item.heading {
+    font-size: 1.25rem; 
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+.portfolio-item.heading,
+.portfolio-item.subtitle {
+    text-align: center;
+    display: block;
+    width: 100%;
+	 margin-bottom: 0.5rem;
+}
 		
 
 .profile-info {
@@ -935,6 +968,7 @@ header.major p {
 		}
 		
 		.interests-header span {
+			font-size: 1.2rem; 
 			color: #00a699;
 			font-weight: bold;
 			padding: 5px 10px;
@@ -1942,7 +1976,7 @@ header.major p {
 /* Main -- All pages*/
 
 	.main {
-		padding: 0 0 4em 0 ;
+		 padding: 2em 0 4em 0;
 	}
 
 		.main.style1 {
