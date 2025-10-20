@@ -204,6 +204,8 @@ input, select, textarea {
   font-size: 32px; /* Accent color */
 }
 
+
+
 /* Responsive font sizes for mobile */
 @media (max-width: 768px) {
   .h1.header_main {
