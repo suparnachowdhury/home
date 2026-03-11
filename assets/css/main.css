@@ -511,29 +511,12 @@ header.major p {
 	margin-right: 10px;
 }
 
-.ribbon-text {
-	display: flex;
-	flex-direction: column;
-	font-size: 14px;
-	line-height: 1.2;
-	color: #e0e0e0;
-}
 
-.ribbon-text .name {
-	font-weight: bold;
-	font-size: 18px;
-}
-
-.ribbon-text .title {
-	font-style: italic;
-	font-size: 14px;
-	color: #eee;
-}
 
 /* === Navigation === */
 .ribbon-nav {
 	display: flex;
-	gap: 20px;
+	gap: 30px;
 	align-items: center;
 	flex-wrap: wrap;
 	flex-direction: row;
@@ -545,7 +528,9 @@ header.major p {
 .ribbon-link {
 	text-decoration: none;
 	color: #eee;
-	font-size: 16px;
+	font-size: 1.2rem;      
+    font-weight: 500;      
+    letter-spacing: 0.5px;
 	padding: 8px 16px;
 	transition: color 0.2s;
 	position: relative;
@@ -612,18 +597,19 @@ header.major p {
 
 /* === Let's Talk CTA === */
 .ribbon-cta {
-	display: flex;
-	align-items: center;
-	background-color: #00c853;
-	border-radius: 25px;
-	padding: 8px 16px;
-	text-decoration: none;
-	color: #fff;
-	font-size: 16px;
-	font-weight: bold;
-	transition: background-color 0.2s ease;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-	margin-left: 8px;
+    display: flex;
+    align-items: center;
+    background-color: #00c853;
+    border-radius: 25px;
+    padding: 10px 20px;     
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1rem;     
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-left: 8px;
+    border-bottom: none !important;
 }
 
 .ribbon-cta:hover {
@@ -671,17 +657,7 @@ header.major p {
 		order: 3;
 	}
 	/* Smaller name/title font */
-	.ribbon-text {
-		font-size: 12px;
-	}
-
-	.ribbon-text .name {
-		font-size: 16px;
-	}
-
-	.ribbon-text .title {
-		font-size: 12px;
-	}
+	
 
 
 	.ribbon-link {
@@ -744,11 +720,11 @@ header.major p {
     color: white;
 }
 
-
-	
-
 }
 
+
+
+/*Hero Portfolio */
 
 .hero__portfolio {
     position: relative;
@@ -968,7 +944,7 @@ header.major p {
 		}
 		
 		.interests-header span {
-			font-size: 1.2rem; 
+			font-size: 2rem; 
 			color: #00a699;
 			font-weight: bold;
 			padding: 5px 10px;
@@ -1360,7 +1336,189 @@ header.major p {
 	}
   }
 
+        /* --- What I Can Do For You - Updated Styles --- */
+        #services-new .split-layout {
+            display: flex;
+            flex-direction: row;
+            align-items: start;
+            gap: 2em;
+            padding: 3em 0;
+        }
 
+        #services-new  {
+            font-family: 'Segoe UI', sans-serif !important;
+            letter-spacing: 0.1em;
+        }
+
+        #services-new .main-heading {
+            font-size: 3.5rem;
+            margin-bottom: 0.2em;
+            font-weight: 400;
+        }
+		#services-new .content-col{
+			background-color: #f9f9f9;
+			padding: 20px;
+		}
+
+        #services-new .content-col header p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-top: -1em;
+            margin-bottom: 2em;
+        }
+
+        #services-new .accordion {
+            width: 100%;
+        }
+
+        #services-new .accordion-item {
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        #services-new .accordion-input {
+            display: none;
+        }
+
+        #services-new .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+			font-weight: 900;
+            padding: 1.2rem 0;
+            margin-bottom: 0;
+            font-weight: normal;
+            transition: color 0.3s;
+        }
+
+        /* ICON LOGIC: Points Right by default */
+        #services-new .accordion-header .icon::before {
+            content: "\f054"; /* FontAwesome chevron-right */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            font-style: normal;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        /* Rotate icon 90deg when checked */
+        #services-new .accordion-input:checked ~ .accordion-header .icon::before {
+            transform: rotate(90deg);
+            color: #e44d26; 
+        }
+
+        #services-new .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #services-new .accordion-content ul {
+            list-style: none;
+            padding: 0 0 2rem 1.5rem;
+            margin: 0;
+        }
+
+        #services-new .accordion-content li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #444;
+        }
+
+        #services-new .accordion-content li::before {
+            content: "\f00c";
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #e44d26;
+            font-size: 0.9rem;
+        }
+
+        #services-new .accordion-input:checked ~ .accordion-content {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        #services-new .accordion-input:checked ~ .accordion-header {
+            font-weight: bold;
+            color: #000;
+        }
+
+        #services-new .image-col {
+            width: 40%;
+            position: relative;
+        }
+
+        #services-new .styled-image {
+            display: block;
+            transform: rotate(5deg) scale(0.95);
+            transition: all 0.3s ease;
+        }
+
+        #services-new .image-col img {
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        #services-new .image-col:hover .styled-image {
+            transform: rotate(3deg) scale(1);
+        }
+
+        @media screen and (max-width: 980px) {
+            #services-new .split-layout { flex-direction: column-reverse; gap: 1.5em; }
+            #services-new .image-col, #services-new .content-col { width: 100%; }
+            #services-new .content-col header { text-align: center; margin-top: 1em; }
+            #services-new .main-heading { font-size: 2.8rem; }
+        }
+
+        /* Area of Interest */
+        .standard-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+		#area-interst {
+            display: flex;
+            flex-direction: row;
+            align-items: start;
+            gap: 2em;
+            padding: 3em 0;
+        }
+
+        #area-interst  {
+            font-family: 'Segoe UI', sans-serif !important;
+            letter-spacing: 0.1em;
+        }
+        .standard-section { padding: 4em 0; background: #fff; }
+        .interests-header { text-align: center; margin-bottom: 3em; }			
+	.interests-header span {
+			font-size: 1.2rem; 
+			color: #00a699;
+			font-weight: bold;
+			padding: 5px 10px;
+			border-radius: 5px;
+			background-color: #e0f7f5;
+			text-align: center;
+			text-transform: uppercase;
+		}
+        .grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; text-align: center; }
+        .icon-wrapper { background: #f4f4f4; width: 50px; height: 50px; border-radius: 50%; display: flex;
+			align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.2rem; color: #333; }
+        .item-title {  font-size: 1.1rem; font-weight: 600; margin-bottom: 0.8rem; }
+        .item-desc { 
+			
+			color: #4b5563;     
+    font-weight: 400;   
+	font-size: 1rem;
+    text-align: center;
+    line-height: 1.6;
+    padding: 0 1rem;
+    letter-spacing: normal;
+		}
+
+        @media screen and (max-width: 980px) { .grid-container { grid-template-columns: repeat(2, 1fr); } }
+        @media screen and (max-width: 736px) { .grid-container { grid-template-columns: 1fr; } }
 /*Area of interest*/
 
 .areas-of-interest-section {
@@ -1408,6 +1566,12 @@ header.major p {
     grid-template-columns: 1fr !important;
   }
 }
+@media (max-width: 640px) {
+    .item-desc {
+        font-size: 1.05rem;
+        font-weight: 500;
+    }
+}
 
 .interest-item {
     align-items: center;
@@ -1443,10 +1607,17 @@ header.major p {
 
 .item-desc {
     color: #4b5563;      /* Tailwind's text-gray-600 */
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-align: center;
     line-height: 1.6;
     padding: 0 1rem;
+	color: #4b5563;      /* Professional gray */
+    font-size: 1.15rem;   /* Increased from 1rem */
+    font-weight: 400;    /* Increased weight (Medium) */
+    text-align: center;
+    line-height: 1.6;
+    padding: 0 1rem;
+    letter-spacing: normal;
 }
 
 

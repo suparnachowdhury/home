@@ -23,11 +23,11 @@
 
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            /*font-family: 'Inter', sans-serif;*/
             background-color: #f7f7f7;
         }
         .project-title {
-            font-family: 'Playfair Display', serif;
+            /*font-family: 'Playfair Display', serif;*/
             letter-spacing: 0.25em;
             font-weight: 600;
         }
@@ -41,17 +41,13 @@
         <div class="ribbon-wrapper">
             <a href="https://github.com/suparnachowdhury" class="logo-link">
 						<img alt="" src="images/profile_picture.png" class="ribbon-img">
-						<div class="ribbon-text">
-							<div class="name">Suparna Chowdhury</div>
-							
-						</div>
-					</a>
+										</a>
             <div class="menu-button">
                 <button type="button">Menu</button>
             </div>
             <nav class="ribbon-nav">
                 <a href="index.html" class="ribbon-link">Home</a>
-                <a href="resume.html" class="ribbon-link">About Me</a>
+                <a href="aboutme.html" class="ribbon-link">About Me</a>
                 <a href="portfolio.html" class="ribbon-link">Portfolio</a>
                 <a href="resources.html" class="ribbon-link">Resources</a>
                 <a href="https://suparnachowdhury.medium.com/" target="_blank" class="ribbon-link">Blog</a>
@@ -73,44 +69,64 @@
 <div class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 space-y-10">
 
     <!-- Data Governance & Compliance Risk Project -->
-    <div class="w-full max-w-6xl bg-white rounded-xl shadow-lg p-6 sm:p-10 lg:p-16">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-start">
+   <div class="w-full max-w-6xl bg-white rounded-xl shadow-lg p-6 sm:p-10 lg:p-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div class="flex flex-col">
+            <h1 class="project-title text-xl font-bold uppercase text-gray-800 mb-6">Data Governance & Compliance Risk Project</h1>
+            <p class="text-base text-gray-700 font-medium mb-4"><span class="font-bold text-gray-900">Power BI</span> · Dashboard Project</p>
+            
+            <ul class="list-disc ml-5 space-y-3 text-lg text-gray-600">
+                <li>Analyzed 5500 governance audit records across domains and regulations</li>
+                <li>Designed a risk-based framework translating compliance metrics into financial exposure (€)</li>
+                <li>Built an interactive <span class="font-semibold">Power BI dashboard using DAX, data modeling, and risk scoring logic</span></li>
+            </ul>
+        </div>
+        
+        <div class="flex flex-col items-center">
             <div class="w-full aspect-video rounded-lg overflow-hidden border">
                 <img src="images/projects/pic_project_governance.png" alt="Data Governance Project" class="w-full h-full object-contain">
             </div>
-            <div class="flex flex-col">
-                <h1 class="project-title text-xl uppercase text-gray-800 mb-6">Data Governance & Compliance Risk Project</h1>
-                <p class="text-base text-gray-700 font-medium mb-4"><span class="font-bold text-gray-900">Power BI</span> · Dashboard Project</p>
-                <ul class="list-disc ml-5 space-y-3 text-sm text-gray-600">
-                    <li>Analyzed 5500 governance audit records across domains and regulations</li>
-                    <li>Designed a risk-based framework translating compliance metrics into financial exposure (€)</li>
-                    <li>Built an interactive <span class="font-semibold">Power BI dashboard using DAX, data modeling, and risk scoring logic</span></li>
-                </ul>
-                <div class="mt-10 flex flex-wrap justify-start gap-4">
-                    <a href="https://github.com/suparnachowdhury/Enterprise-Data-Governance-Compliance-Risk-Dashboard/tree/main" target="_blank" class="px-8 py-3 text-xs uppercase border border-gray-300 text-gray-700 rounded-full hover:bg-gray-50">View Project</a>
-                    <a href="https://www.linkedin.com/pulse/from-compliance-metrics-business-decisions-building-data-chowdhury-qobuf/?trackingId=pehz11wScEen%2BEfdMrqz1Q%3D%3D" target="_blank" class="px-8 py-3 text-xs uppercase border border-gray-300 text-gray-700 rounded-full hover:bg-gray-50">Read Article</a>
-                </div>
+
+            <div class="mt-8 flex flex-wrap justify-center gap-4 w-full">
+                <a href="https://github.com/suparnachowdhury/Enterprise-Data-Governance-Compliance-Risk-Dashboard/tree/main" 
+                   target="_blank" 
+                   class="flex-1 min-w-[160px] text-center px-6 py-3 text-xs font-bold uppercase tracking-widest border border-[#00a699] bg-[#e0f7f5] text-[#00a699] rounded-full transition-colors duration-300 hover:bg-[#b2ebe4]">
+                   View Project
+                </a>
+
+                <a href="https://www.linkedin.com/pulse/from-compliance-metrics-business-decisions-building-data-chowdhury-qobuf/" 
+                   target="_blank" 
+                   class="flex-1 min-w-[160px] text-center px-6 py-3 text-xs font-bold uppercase tracking-widest border border-[#00a699] bg-[#e0f7f5] text-[#00a699] rounded-full transition-colors duration-300 hover:bg-[#b2ebe4]">
+                   Read Article
+                </a>
             </div>
         </div>
+
+        
+        
     </div>
+</div>
 
     <!-- K-Means Urban Clustering Project -->
 <div class="w-full max-w-6xl bg-white rounded-xl shadow-lg p-6 sm:p-10 lg:p-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-start">
-        <div class="w-full aspect-video rounded-lg overflow-hidden border">
-            <img src="images/projects/pic_project_clustering.png" alt="K-Means Urban Clustering Project" class="w-full h-full object-contain">
-        </div>
-        <div class="flex flex-col">
-            <h1 class="project-title text-xl uppercase text-gray-800 mb-6">Urban Pattern Analysis Using K-Means Clustering</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <div class="flex flex-col">
+            <h1 class="project-title text-xl font-bold uppercase text-gray-800 mb-6">Urban Pattern Analysis Using K-Means Clustering</h1>
             <p class="text-base text-gray-700 font-medium mb-4"><span class="font-bold text-gray-900">Python · Machine Learning</span> · Unsupervised Learning Project</p>
-            <ul class="list-disc ml-5 space-y-3 text-sm text-gray-600">
+            <ul class="list-disc ml-5 space-y-3 text-lg text-gray-600">
                 <li>Clustered 300 cities using K-Means to identify distinct urban archetypes based on 8 socioeconomic and environmental indicators</li>
                 <li>Engineered 5 composite features (Socioeconomic Index, Urban Stress, Green Comfort) to improve clustering quality by 4.8%</li>
                 <li>Built classification framework using <span class="font-semibold">scikit-learn, PCA, and feature engineering techniques</span> achieving a silhouette score of 0.374</li>
             </ul>
-            <div class="mt-10 flex flex-wrap justify-start gap-4">
-                <a href="https://github.com/suparnachowdhury/advanced-clustering-analysis" target="_blank" class="px-8 py-3 text-xs uppercase border border-gray-300 text-gray-700 rounded-full hover:bg-gray-50">View Project</a>
-                <a href="https://www.linkedin.com/pulse/decoding-urban-patterns-k-means-clustering-approach-city-chowdhury-7dxxc/" target="_blank" class="px-8 py-3 text-xs uppercase border border-gray-300 text-gray-700 rounded-full hover:bg-gray-50">Read Article</a>
+            
+        </div>
+        <div class="flex flex-col items-center">
+        <div class="w-full aspect-video rounded-lg overflow-hidden border">
+            <img src="images/projects/pic_project_clustering.png" alt="K-Means Urban Clustering Project" class="w-full h-full object-contain">
+        </div>
+        <div class="mt-8 flex flex-wrap justify-center gap-4 w-full">
+                <a href="https://github.com/suparnachowdhury/advanced-clustering-analysis" target="_blank" class="flex-1 min-w-[160px] text-center px-6 py-3 text-xs font-bold uppercase tracking-widest border border-[#00a699] bg-[#e0f7f5] text-[#00a699] rounded-full transition-colors duration-300 hover:bg-[#b2ebe4]">View Project</a>
+                <a href="https://www.linkedin.com/pulse/decoding-urban-patterns-k-means-clustering-approach-city-chowdhury-7dxxc/" target="_blank" class="flex-1 min-w-[160px] text-center px-6 py-3 text-xs font-bold uppercase tracking-widest border border-[#00a699] bg-[#e0f7f5] text-[#00a699] rounded-full transition-colors duration-300 hover:bg-[#b2ebe4]">Read Article</a>
             </div>
         </div>
     </div>
@@ -118,15 +134,13 @@
 
     <!-- Tableau Dynamic Zone Visibility -->
     <div class="w-full max-w-6xl bg-white rounded-xl shadow-lg p-6 sm:p-10 lg:p-16">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-start">
-            <div class="w-full aspect-video rounded-lg overflow-hidden border">
-                <img src="images/projects/pic_projects_dzv.png" alt="Tableau DZV Project" class="w-full h-full object-contain">
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+            
             <div class="flex flex-col">
-                <h1 class="project-title text-xl uppercase text-gray-800 mb-6">Tableau Dynamic Zone Visibility Series</h1>
+                <h1 class="project-title text-xl font-bold uppercase text-gray-800 mb-6">Tableau Dynamic Zone Visibility Series</h1>
                 <p class="text-base text-gray-700 font-medium mb-4"><span class="font-bold text-gray-900">Tableau</span> | Interactive Dashboard Design</p>
                   
-                <ul class="list-disc ml-5 space-y-3 text-sm text-gray-600">
+                <ul class="list-disc ml-5 space-y-3 text-lg text-gray-600">
                 
                 <li> A two-part practical article series focused on eliminating dashboard clutter
                 and designing intuitive, interactive Tableau dashboards using
@@ -136,32 +150,41 @@
                 </li>
                 <li>Real-world use cases: slide-out panels, chart swapping, zooming & drill-downs</li>
                 
-            </ul>
-                <div class="mt-10 flex flex-wrap gap-4">
-                    <a href="https://medium.com/@suparnachowdhury/mastering-dynamic-zone-visibility-in-tableau-part-1-a0057ddae908" target="_blank" class="px-8 py-3 text-xs uppercase border border-gray-300 text-gray-700 rounded-full hover:bg-gray-50">Read Part 1</a>
-                    <a href="https://medium.com/@suparnachowdhury/mastering-dynamic-zone-visibility-in-tableau-part-2-ac3fcece1851" target="_blank" class="px-8 py-3 text-xs uppercase border border-gray-300 text-gray-700 rounded-full hover:bg-gray-50">Read Part 2</a>
-                </div>
+            </ul>            
             </div>
+            <div class="flex flex-col items-center">
+                <div class="w-full aspect-video rounded-lg overflow-hidden border">
+                <img src="images/projects/pic_projects_dzv.png" alt="Tableau DZV Project" class="w-full h-full object-contain">
+            </div>
+                <div class="mt-8 flex flex-wrap justify-center gap-4 w-full">
+                    <a href="https://medium.com/@suparnachowdhury/mastering-dynamic-zone-visibility-in-tableau-part-1-a0057ddae908" target="_blank" class="flex-1 min-w-[160px] text-center px-6 py-3 text-xs font-bold uppercase tracking-widest border border-[#00a699] bg-[#e0f7f5] text-[#00a699] rounded-full transition-colors duration-300 hover:bg-[#b2ebe4]">Read Part 1</a>
+                    <a href="https://medium.com/@suparnachowdhury/mastering-dynamic-zone-visibility-in-tableau-part-2-ac3fcece1851" target="_blank" class="flex-1 min-w-[160px] text-center px-6 py-3 text-xs font-bold uppercase tracking-widest border border-[#00a699] bg-[#e0f7f5] text-[#00a699] rounded-full transition-colors duration-300 hover:bg-[#b2ebe4]">Read Part 2</a>
+                </div>
+                </div>
         </div>
     </div>
 
     <!-- Credit Risk Prediction & Analytics Dashboard Project -->
 <div class="w-full max-w-6xl bg-white rounded-xl shadow-lg p-6 sm:p-10 lg:p-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-start">
-        <div class="w-full aspect-video rounded-lg overflow-hidden border">
-            <img src="images/projects/pic_credit_risk.png" alt="Credit Risk Prediction Project" class="w-full h-full object-contain">
-        </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+        
         <div class="flex flex-col">
-            <h1 class="project-title text-xl uppercase text-gray-800 mb-6">Credit Risk Prediction & Analytics Dashboard</h1>
+            <h1 class="project-title text-xl font-bold  uppercase text-gray-800 mb-6">Credit Risk Prediction & Analytics Dashboard</h1>
             <p class="text-base text-gray-700 font-medium mb-4"><span class="font-bold text-gray-900">Python · Power BI · Machine Learning</span> · Predictive Analytics Project</p>
-            <ul class="list-disc ml-5 space-y-3 text-sm text-gray-600">
+            <ul class="list-disc ml-5 space-y-3 text-lg text-gray-600">
                 <li>Analyzed 32,581 loan applications ($312.4M) to predict default risk with 93% accuracy using XGBoost and Random Forest</li>
                 <li>Engineered risk-based segmentation framework identifying $77.1M in defaulted loans across High/Medium/Low categories</li>
                 <li>Built interactive <span class="font-semibold">Power BI dashboard with DAX calculations, feature importance analysis, and geographic risk patterns</span></li>
             </ul>
-            <div class="mt-10 flex flex-wrap justify-start gap-4">
-                <a href="https://github.com/suparnachowdhury/Credit-Risk-Analysis/" target="_blank" class="px-8 py-3 text-xs uppercase border border-gray-300 text-gray-700 rounded-full hover:bg-gray-50">View Project</a>
-                <a href="https://app.powerbi.com/view?r=eyJrIjoiYTQwODJhOWMtYjlhZS00NmM4LWJhYTQtNThhYTU5ZGFhODk3IiwidCI6ImRiMjMwNmZkLWFmMjUtNGUyOS05Y2NiLWJmMjg2YWY2MjFjMCJ9" target="_blank" class="px-8 py-3 text-xs uppercase border border-gray-300 text-gray-700 rounded-full hover:bg-gray-50">Live Report</a>
+            
+        </div>
+        <div class="flex flex-col items-center">
+            <div class="w-full aspect-video rounded-lg overflow-hidden border">
+            <img src="images/projects/pic_credit_risk.png" alt="Credit Risk Prediction Project" class="w-full h-full object-contain">
+        </div>
+        <div class="mt-8 flex flex-wrap justify-center gap-4 w-full">
+                <a href="https://github.com/suparnachowdhury/Credit-Risk-Analysis/" target="_blank" class="flex-1 min-w-[160px] text-center px-6 py-3 text-xs font-bold uppercase tracking-widest border border-[#00a699] bg-[#e0f7f5] text-[#00a699] rounded-full transition-colors duration-300 hover:bg-[#b2ebe4]">View Project</a>
+                <a href="https://app.powerbi.com/view?r=eyJrIjoiYTQwODJhOWMtYjlhZS00NmM4LWJhYTQtNThhYTU5ZGFhODk3IiwidCI6ImRiMjMwNmZkLWFmMjUtNGUyOS05Y2NiLWJmMjg2YWY2MjFjMCJ9" target="_blank" class="flex-1 min-w-[160px] text-center px-6 py-3 text-xs font-bold uppercase tracking-widest border border-[#00a699] bg-[#e0f7f5] text-[#00a699] rounded-full transition-colors duration-300 hover:bg-[#b2ebe4]">Live Report</a>
             </div>
         </div>
     </div>
@@ -169,20 +192,23 @@
 
     <!-- SQL Project -->
     <div class="w-full max-w-6xl bg-white rounded-xl shadow-lg p-6 sm:p-10 lg:p-16">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-start">
-            <div class="w-full aspect-video rounded-lg overflow-hidden border">
-                <img src="images/projects/pics_sql_retail.png" alt="SQL Project" class="w-full h-full object-contain">
-            </div>
-            <div class="flex flex-col">
-                <h1 class="project-title text-xl uppercase text-gray-800 mb-6">SQL Project: Retail Sales, Retention & Cohort Analysis</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+                       <div class="flex flex-col">
+                <h1 class="project-title text-xl font-bold uppercase text-gray-800 mb-6">SQL Project: Retail Sales, Retention & Cohort Analysis</h1>
                 <p class="text-base text-gray-700 font-medium mb-4"><span class="font-bold text-gray-900">SQL Analytics</span> · Superstore Data</p>
-                <ul class="list-disc ml-5 space-y-3 text-sm text-gray-600">
+                <ul class="list-disc ml-5 space-y-3 text-lg text-gray-600">
                     <li>A real-world SQL retail analytics project uncovering sales trends</li>
                     <li>Analyzed customer retention through cohort analysis</li>
                     <li>Assessed the impact of discounting on business performance</li>
                 </ul>
-                <div class="mt-10 flex flex-wrap gap-4">
-                    <a href="https://suparnachowdhury.medium.com/a-sql-project-on-retail-sales-retention-and-cohort-analysis-5b4dc5d38846" target="_blank" class="px-8 py-3 text-xs uppercase border border-gray-300 text-gray-700 rounded-full hover:bg-gray-50">View Project</a>
+                
+            </div>
+            <div class="flex flex-col items-center">
+                 <div class="w-full aspect-video rounded-lg overflow-hidden border">
+                <img src="images/projects/pics_sql_retail.png" alt="SQL Project" class="w-full h-full object-contain">
+            </div>
+            <div class="mt-8 flex flex-wrap justify-center gap-4 w-full">
+                    <a href="https://suparnachowdhury.medium.com/a-sql-project-on-retail-sales-retention-and-cohort-analysis-5b4dc5d38846" target="_blank" class="flex-1 min-w-[160px] text-center px-6 py-3 text-xs font-bold uppercase tracking-widest border border-[#00a699] bg-[#e0f7f5] text-[#00a699] rounded-full transition-colors duration-300 hover:bg-[#b2ebe4]">View Project</a>
                 </div>
             </div>
         </div>
@@ -190,20 +216,24 @@
 
     <!-- Reinforcement Learning Project -->
     <div class="w-full max-w-6xl bg-white rounded-xl shadow-lg p-6 sm:p-10 lg:p-16">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-start">
-            <div class="w-full aspect-video rounded-lg overflow-hidden border">
-                <img src="images/projects/pics_reinforcement_paper.png" alt="Reinforcement Learning Project" class="w-full h-full object-contain">
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+            
             <div class="flex flex-col">
-                <h1 class="project-title text-xl uppercase text-gray-800 mb-6">Reinforcement Learning for Fuel Cell Thermal Energy Management</h1>
+                <h1 class="project-title text-xl font-bold uppercase text-gray-800 mb-6">Reinforcement Learning for Fuel Cell Thermal Energy Management</h1>
                 <p class="text-base text-gray-700 font-medium mb-4"><span class="font-bold text-gray-900">Machine Learning</span> · Research Paper</p>
-                <ul class="list-disc ml-5 space-y-3 text-sm text-gray-600">
+                <ul class="list-disc ml-5 space-y-3 text-lg text-gray-600">
                     <li>Developed an algorithm for optimal thermal energy management in PEM fuel cell power plants using <span class="font-semibold">reinforcement learning</span></li>
                     <li>Implemented <span class="font-semibold">Q-learning algorithm with epsilon greedy policy</span> to minimize total generation costs over 24-hour operational schedules</li>
                     <li>Optimized electrical power generation, energy trading, and <span class="font-semibold">thermal energy recovery & storage based on real-time demand</span></li>
                 </ul>
-                <div class="mt-10 flex flex-wrap gap-4">
-                    <a href="https://ieeexplore.ieee.org/document/7356834" target="_blank" class="px-8 py-3 text-xs uppercase border border-gray-300 text-gray-700 rounded-full hover:bg-gray-50">Read More</a>
+                
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="w-full aspect-video rounded-lg overflow-hidden border">
+                <img src="images/projects/pics_reinforcement_paper.png" alt="Reinforcement Learning Project" class="w-full h-full object-contain">
+            </div>
+                <div class="mt-8 flex flex-wrap justify-center gap-4 w-full">
+                    <a href="https://ieeexplore.ieee.org/document/7356834" target="_blank" class="flex-1 min-w-[160px] text-center px-6 py-3 text-xs font-bold uppercase tracking-widest border border-[#00a699] bg-[#e0f7f5] text-[#00a699] rounded-full transition-colors duration-300 hover:bg-[#b2ebe4]">Read More</a>
                 </div>
             </div>
         </div>

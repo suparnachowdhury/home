@@ -301,6 +301,7 @@ header h6 + p {
 }
 
 
+
 /* === Ribbon Styles === */
 .header-ribbon {
 	display: flex;
@@ -330,14 +331,15 @@ header h6 + p {
 	display: none; 
 }
 /* === Logo + Text === */
-.logo-link {
+.logo-link ,.logo-link *{
 	display: flex;
 	align-items: center;
-	text-decoration: none;
-	color: #333;
 	outline: none !important;
-	border: none !important;
+	text-decoration: none;
+	color: inherit;
+	 border: none !important;
 }
+
 
 .ribbon-img {
 	width: 40px;
@@ -347,29 +349,13 @@ header h6 + p {
 	margin-right: 10px;
 }
 
-.ribbon-text {
-	display: flex;
-	flex-direction: column;
-	font-size: 14px;
-	line-height: 1.2;
-	color: #e0e0e0;
-}
 
-.ribbon-text .name {
-	font-weight: bold;
-	font-size: 18px;
-}
 
-.ribbon-text .title {
-	font-style: italic;
-	font-size: 14px;
-	color: #eee;
-}
 
 /* === Navigation === */
 .ribbon-nav {
 	display: flex;
-	gap: 20px;
+	gap: 30px;
 	align-items: center;
 	flex-wrap: wrap;
 	flex-direction: row;
@@ -381,12 +367,15 @@ header h6 + p {
 .ribbon-link {
 	text-decoration: none;
 	color: #eee;
-	font-size: 16px;
+	font-size: 1.2rem;      
+    font-weight: 500;      
+    letter-spacing: 0.5px;
 	padding: 8px 16px;
 	transition: color 0.2s;
 	position: relative;
 	border-radius: 20px;
 	text-align: center;
+	outline: none;
 }
 
 .ribbon-link::after {
@@ -406,6 +395,8 @@ header h6 + p {
 
 .ribbon-link:hover::after {
 	width: 100%;
+	background-color: #f0f0f0;
+  color: #333;
 }
 
 .ribbon-nav .ribbon-link.active {
@@ -414,7 +405,12 @@ header h6 + p {
   color: #333;
   
 }
-
+.ribbon-nav .ribbon-link:focus {
+  /* Change the background color */
+  background-color: #f0f0f0;
+  color: #333;
+  
+}
 /* === LinkedIn Button === */
 .ribbon-linkedin {
 	display: flex;
@@ -430,7 +426,7 @@ header h6 + p {
 }
 
 .ribbon-linkedin:hover {
-	background-color: #98C47F;
+	background-color: #004182;
 }
 
 .ribbon-linkedin img {
@@ -440,18 +436,19 @@ header h6 + p {
 
 /* === Let's Talk CTA === */
 .ribbon-cta {
-	display: flex;
-	align-items: center;
-	background-color: #00c853;
-	border-radius: 25px;
-	padding: 8px 16px;
-	text-decoration: none;
-	color: #fff;
-	font-size: 16px;
-	font-weight: bold;
-	transition: background-color 0.2s ease;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-	margin-left: 8px;
+    display: flex;
+    align-items: center;
+    background-color: #00c853;
+    border-radius: 25px;
+    padding: 10px 20px;     
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1rem;     
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-left: 8px;
+    border-bottom: none !important;
 }
 
 .ribbon-cta:hover {
@@ -499,22 +496,12 @@ header h6 + p {
 		order: 3;
 	}
 	/* Smaller name/title font */
-	.ribbon-text {
-		font-size: 12px;
-	}
-
-	.ribbon-text .name {
-		font-size: 16px;
-	}
-
-	.ribbon-text .title {
-		font-size: 12px;
-	}
+	
 
 
 	.ribbon-link {
 		font-size: 18px;
-		padding: 10px;
+		padding: 1px;
 		text-align: center;
 		border-radius: 0;
 	}
@@ -532,6 +519,7 @@ header h6 + p {
 		margin-left: 6px;
 	}
 
+	
 	.menu-button {
     display: flex;
     justify-content: center;
@@ -572,7 +560,6 @@ header h6 + p {
 }
 
 }
-
 
 
 
