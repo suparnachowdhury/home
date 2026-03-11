@@ -318,13 +318,13 @@ header h6 + p {
 	justify-content: space-between;
 	flex-wrap: wrap;
 	gap: 20px;
-	padding: 35px 60px;
+	padding: 15px 60px;
 	border-radius: 60px;
 	background-color: rgba(0, 0, 0, 0.15);
 	backdrop-filter: blur(4px);
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 	max-width: 80%; /* Shorter ribbon */
-	margin: -10px auto 0;
+	margin:-10px auto 0;
 	margin-top: -20px !important;
 	width: 100%;
 }
@@ -349,7 +349,6 @@ header h6 + p {
 	object-fit: cover;
 	margin-right: 10px;
 }
-
 
 
 
@@ -500,7 +499,7 @@ header h6 + p {
 		border-radius: 5px;
 		order: 3;
 	}
-	/* Smaller name/title font */
+	
 	
 
 
@@ -565,6 +564,7 @@ header h6 + p {
 }
 
 }
+
 
 
 
@@ -882,34 +882,39 @@ header h6 + p {
 }
 
 /* subscribe newsletter */
-.subscribe-button {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 5px 15px;
-  background-color: #ff6f61; 
-  color: #fff;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+/* Newsletter Button Styling */
+.btn-subscribe {
+    display: inline-block;
+    text-align: center;
+    padding: 0.8em 2em !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    
+    /* Colors */
+    background-color: #e0f7f5 !important;
+    color: #00a699 !important;
+    border: 2px solid #00a699 !important; /* Solid border to override dotted */
+    border-radius: 50px !important;
+    
+    /* Resetting your global 'a' styles */
+    text-decoration: none !important;
+    border-bottom: 2px solid #00a699 !important; 
+    transition: all 0.3s ease;
 }
 
-.subscribe-button:hover {
-  background-color: #e85b4f; 
-  color: #fff;
+.btn-subscribe:hover {
+    background-color: #00a699 !important;
+    color: #ffffff !important;
+    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 166, 153, 0.2);
 }
-.custom-k-icon {
-  display: inline-block;
-  background-color: #ff6f61; /* Kaggle blue */
-  color: white;
-  font-weight: bold;
-  font-size: 0.9em;
-  width: 25px;
-  height: 25px;
-  text-align: center;
-  line-height: 25px;
-  border-radius: 50%;
-  font-family: Arial, sans-serif;
+
+/* Ensure the section content is centered if needed */
+.newsletter-box {
+    text-align: center;
 }
 
 /* YPortfolio Section Styling */
@@ -933,61 +938,6 @@ header h6 + p {
 	justify-content: space-between;
 	gap: 2.5rem; /* Increased gap for breathing space */
 	padding: 0 1rem;
-  }
-  
-  .work-item {
-	background-color: #fff;
-	border-radius: 10px;
-	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-	overflow: hidden;
-	transition: transform 0.3s ease-in-out;
-	width: calc(33.333% - 1.666rem);
-	margin-bottom: 2.5rem;
-	padding-bottom: 1rem;
-  }
-  
-  .work-item:hover {
-	transform: translateY(-8px);
-  }
-  
-  .work-item img {
-	width: 100%;
-	height: auto;
-	display: block;
-  }
-  
-  .work-item h3 {
-	font-size: 1.3rem;
-	font-weight: 600;
-	margin: 1.2rem 1.2rem 0.5rem;
-	color: #333;
-  }
-  
-  .work-item p {
-	font-size: 1rem;
-	margin: 0 1.2rem 1.2rem;
-	color: #666;
-  }
-  
-  /* YResponsive Design */
-  @media (max-width: 768px) {
-	.work-item {
-	  width: calc(50% - 1rem);
-	}
-  
-	#portfolio-main section {
-	  padding: 3rem 2rem;
-	}
-  }
-  
-  @media (max-width: 480px) {
-	.work-item {
-	  width: 100%;
-	}
-  
-	#portfolio-main section {
-	  padding: 2rem 1.5rem;
-	}
   }
   
 
