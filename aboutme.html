@@ -43,7 +43,7 @@
             </div>
         </div>
         <header class="major no-line">
-            <h1 class="h1 header_resume ">
+            <h1 class="h1 header_main ">
                 <span>About Me</span><br />
                 <span class="h1-resume-color">Data storyteller with a passion for clarity</span>
             </h1>   
@@ -339,6 +339,12 @@ Efficient face recognition using local derivative pattern and shifted phase-enco
             menuBtn.classList.toggle('open');
             ribNav.classList.toggle('show');
         });
+        document.querySelectorAll('.ribbon-link').forEach(link => {
+        // If the link's href matches the current URL path
+        if (link.href === window.location.href) {
+            link.classList.add('active');
+        }
+    });
     </script>
 </body>
 </html>

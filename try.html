@@ -25,16 +25,13 @@
             <div class="ribbon-wrapper">
                 <a href="https://github.com/suparnachowdhury" class="logo-link">
                     <img alt="" src="images/profile_picture.png" class="ribbon-img">
-                    <div class="ribbon-text">
-                        <div class="name">Suparna Chowdhury</div>
-                    </div>
-                </a>
+                              </a>
                 <div class="menu-button">
                     <button type="button">Menu</button>
                 </div>
                 <nav class="ribbon-nav">
                     <a href="index.html" class="ribbon-link">Home</a>
-                    <a href="resume.html" class="ribbon-link">About Me</a>
+                    <a href="aboutme.html" class="ribbon-link">About Me</a>
                     <a href="portfolio.html" class="ribbon-link">Portfolio</a>
                     <a href="resources.html" class="ribbon-link">Resources</a>
                     <a href="https://suparnachowdhury.medium.com/" target="_blank" class="ribbon-link">Blog</a>
@@ -45,17 +42,42 @@
                 </nav>
             </div>
         </div>
-        <header class="major no-line">
-            <h1 class="h1 header_resume ">
-                <span>About Me</span><br />
-                <span class="h1-resume-color">Data storyteller with a passion for clarity</span>
-            </h1>   
-        </header>   
+        
+     
+              <header class="major no-line">
+            <h1 class="h1 header_main">
+  <span>Suparna Chowdhury</span><br />
+  <span class="h1-color">Data Scientist</span>
+</h1>
+<p>From data to actionable business insights</p>
+            <div class="portfolio-btn-container">
+  
+      <a href="portfolio.html" class="cta__secondary w-inline-block">
+         <div class="cta-text">Portfolio</div>
+      </a>
+   </div>
+</div>  
+        </header>    
     </section>
 
  
+<script>
+		const menuButton = document.querySelector('.menu-button');
+		const ribbonNav = document.querySelector('.ribbon-nav');
+		
+		menuButton.addEventListener('click', () => {
+			menuButton.classList.toggle('open');
+			ribbonNav.classList.toggle('show');
+		});
+		document.querySelectorAll('.ribbon-link').forEach(link => {
+        // If the link's href matches the current URL path
+        if (link.href === window.location.href) {
+            link.classList.add('active');
+        }
+    });
+		</script> 
 
-<!-- Resume -->
+		<!-- Resume -->
 		<div id="resume" class="container">
 			<div class="left-section">
     <div class="about-me">
@@ -63,7 +85,7 @@
             <span>ABOUT ME</span>
         </div>
         <div class="profile-info">
-            <img src="images/profile_picture.png" alt="Profile Picture" class="profile-pic">
+            <img src="images/profile_pic.jpg" alt="Profile Picture" class="profile-pic">
             <div class="name-title">
                 <h3>Suparna Chowdhury</h3>
 				 <h3>Data Scientist</h3>
@@ -181,164 +203,247 @@ Efficient face recognition using local derivative pattern and shifted phase-enco
 			</div>
 		</div>
 
+		
 
 
-    <section id="services-new" class="container">
-        <div class="split-layout">
-            <div class="content-col">
-                <header class="major no-line">
-                    <h1 class="bebas-font main-heading">WHAT I CAN DO FOR YOU</h1>
-                    <p>As a Business Intelligence Analyst, I transform complex data into clear, actionable insights.</p>
-                </header>
 
-                <div class="accordion">
-                    <div class="accordion-item">
-                        <input type="checkbox" id="acc1" class="accordion-input">
-                        <label for="acc1" class="accordion-header bebas-font">
-                            <span>1. DATA PREPARATION & ANALYSIS</span>
-                            <i class="icon fa fa-chevron-right"></i>
-                        </label>
-                        <div class="accordion-content">
-                            <ul>
-                                <li>SQL queries and automated data extraction</li>
-                                <li>Advanced data transformation and cleaning with Python/dbt</li>
-                                <li>Statistical hypothesis testing and KPI analysis</li>
-                                <li>Trend identification and predictive forecasting</li>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <div class="accordion-item">
-                        <input type="checkbox" id="acc2" class="accordion-input">
-                        <label for="acc2" class="accordion-header bebas-font">
-                            <span>2. DATA VISUALIZATION</span>
-                            <i class="icon fa fa-chevron-right"></i>
-                        </label>
-                        <div class="accordion-content">
-                            <ul>
-                                <li>Interactive Tableau and Power BI dashboards</li>
-                            <li>Executive-level data storytelling for stakeholders</li>
-                            <li>Aesthetic report building</li>
-                            <li>Custom visual analytics solutions</li> </ul>
-                        </div>
-                    </div>
 
-                    <div class="accordion-item">
-                        <input type="checkbox" id="acc3" class="accordion-input">
-                        <label for="acc3" class="accordion-header bebas-font">
-                            <span>3. MACHINE LEARNING</span>
-                            <i class="icon fa fa-chevron-right"></i>
-                        </label>
-                        <div class="accordion-content">
-                            <ul>
-                               <li>Supervised and Unsupervised learning models</li>
-                            <li>Predictive modeling for customer churn and LTV</li>
-                            <li>Natural Language Processing (NLP) for sentiment analysis</li>
-                            <li>Model deployment and MLOps integration</li> </ul>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <input type="checkbox" id="acc4" class="accordion-input">
-                        <label for="acc4" class="accordion-header bebas-font">
-                            <span>4. AI & AGENTIC WORKFLOWS</span>
-                            <i class="icon fa fa-chevron-right"></i>
-                        </label>
-                        <div class="accordion-content">
-                            <ul>
-                               <li>Custom Prompt Engineering for LLM optimization</li>
-                            <li>Building RAG (Retrieval-Augmented Generation) systems</li>
-                            <li>Developing AI Agents for task automation</li>
-                            <li>Exploring AGI-adjacent frameworks and neural architectures</li> </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="image-col">
-                <span class="image fit styled-image">
-                    <img src="images/profile-photo.jpg" alt="Portrait" />
-                </span>
-            </div>
+			
+			<section id="three" class="main style1 special">
+				<div class="portfolio-header">
+            <span>Portfolio</span>
         </div>
-    </section>
+					<!-- Three pictures aspect ration 12:8-->
+			<section id="SQl_poweebi" class="main style1 special">
+				
+				<div class="portfolio-item heading">Analytics in Action</div>
+				<div class="container">
+					<div class="row gtr-150">
+						<div class="col-4 col-12-medium">
+	<span class="image fit" style="height: 220px; overflow: hidden;">
+	<img
+		src="images/projects/pic_project_governance.png"
+		alt="Data Governance & Compliance Risk Dashboard"
+		style="width: 100%; height: 100%; object-fit: cover;"
+	/>
+</span>
 
-    <section class="standard-section">
-    <div class="standard-container">
-        <div class="interests-header">
+
+	<h3>Data Governance & Compliance Risk Analytics</h3>
+
+	<p>
+		Power BI dashboard project translating governance and compliance audit metrics
+		into quantified business risk and financial exposure using DAX-based scoring logic.
+	</p>	
+			<a
+				href="https://github.com/suparnachowdhury/Enterprise-Data-Governance-Compliance-Risk-Dashboard/tree/main"
+				class="custom-button alt"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				View Project
+			</a>
+</div>
+						<div class="col-4 col-12-medium">
+							<span class="image fit" style="height: 220px; overflow: hidden;">
+		<img
+			src="images/projects/pics_sql_retail.png"
+			alt=""
+			style="width: 100%; height: 100%; object-fit: cover;"
+		/>
+	</span>
+							<h3>A SQL Project on Retail Sales, Retention, and Cohort Analysis</h3>
+							<p>A real-world SQL retail analytics project to uncover sales trends, analyze customer retention through cohorts, and assess the impact of discounting.</p>
+							<a href="https://suparnachowdhury.medium.com/a-sql-project-on-retail-sales-retention-and-cohort-analysis-5b4dc5d38846" class="custom-button alt">
+								View Project</a>
+						</div>
+						
+
+<div class="col-4 col-12-medium">
+	<span class="image fit" style="height: 220px; overflow: hidden;">
+	<img
+		src="images/projects/pic_projects_dzv.png"
+		alt="Tableau Dynamic Zone Visibility Dashboards"
+		style="width: 100%; height: 100%; object-fit: cover;"
+	/>
+</span>
+
+
+	<h3 class="font-bold">Tableau Dynamic Zone Visibility Design Patterns</h3>
+
+	<p>
+		A two-part technical article series on building clean and interactive 
+		Tableau dashboards with practical Dynamic Zone Visibility use cases.
+	</p>
+	<a
+				href="https://medium.com/@suparnachowdhury/mastering-dynamic-zone-visibility-in-tableau-part-1-a0057ddae908"
+				class="custom-button alt"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				Read Article
+			</a>
+</div>
+
+					</div>
+				</div>
+				<button class="view-all" onclick="window.location.href='portfolio.html';">
+							<span>Explore All Projects</span>
+						</button>
+			</section>
+				<div class="portfolio-item heading">Data Science Deep Dives</div>
+				
+    <div class="container">
+		
+				<section id="resources-main">
+				<section  class="container">
+				<div class="resources-row">
+					<div class="col-6 col-12-narrower">
+
+	<section class="box special">
+		<span class="image featured"><img src="images/projects/pic_project_clustering.png" alt="" /></span>
+		<h3>Decoding Urban Patterns: K-Means Clustering Analysis</h3>
+		<p>This project segments 300 cities into distinct archetypes using unsupervised learning, 
+			feature engineering, and clustering techniques to inform urban planning decisions.</p>
+		<ul class="actions special">
+			<li><a href="https://github.com/suparnachowdhury/advanced-clustering-analysis" class="custom-button alt" target="_blank">View Project</a></li>
+		</ul>
+	</section>
+
+</div>
+						<div class="col-6 col-12-narrower">
+
+	<section class="box special">
+		<span class="image featured"><img src="images/projects/pic_credit_risk.png" alt="" /></span>
+		<h3>Predicting Loan Defaults: ML-Powered Risk Assessment</h3>
+		<p>Built XGBoost classifier achieving 93% accuracy on 32K+ loans, identifying $77M in default 
+			risk through feature engineering and deployed insights via interactive Power BI dashboard.</p>
+		<ul class="actions special">
+			<li><a href="https://github.com/suparnachowdhury/Credit-Risk-Analysis/" class="custom-button alt" target="_blank">View Project</a></li>
+		</ul>
+	</section>
+
+</div>
+						
+						<div class="col-6 col-12-narrower">
+
+							<section class="box special">
+								<span class="image featured"><img src="images\projects\pic_project_governance.png" alt="" /></span>
+								<h3>Data Governance & Compliance Risk Dashboard Project</h3>
+								<p>A risk-based data governance dashboard that converts compliance metrics into financial exposure and executive action priorities.</p>
+								<ul class="actions special">
+									<li><a href="https://www.linkedin.com/pulse/from-compliance-metrics-business-decisions-building-data-chowdhury-qobuf/?trackingId=pehz11wScEen%2BEfdMrqz1Q%3D%3D" class="custom-button alt">View Project</a></li>
+								</ul>
+							</section>
+
+						</div>
+					</div>
+					</section>
+					<button class="view-all" onclick="window.location.href='portfolio.html';">
+							<span>Explore All Projects</span>
+						</button>
+					</section>
+			</section>
+			<!-- Three pictures aspect ration 12:8-->
+	
+
+
+
+<!-- Area of Interest-->
+ <div>  
+	
+	
+           
+<section class="areas-of-interest-section">
+	 <div class="interests-header">
             <span>Areas of Interest</span>
         </div>
+    <div class="container">
+       
         <div class="grid-container">
-            <div>
-                <div class="icon-wrapper"><i class="fa fa-robot"></i></div>
-                <h3 class="item-title">Machine Learning</h3>
-                <p class="item-desc">Machine learning is a tool, not a buzzword—I love optimizing algorithms and solving real business problems.</p>
-            </div>
-            <div>
-                <div class="icon-wrapper"><i class="fa fa-comments"></i></div>
-                <h3 class="item-title">Natural Language Processing</h3>
-                <p class="item-desc">With NLP, I extract insights from messy text and turn human language into structured knowledge.</p>
-            </div>
-            <div>
-                <div class="icon-wrapper"><i class="fa fa-chart-bar"></i></div>
-                <h3 class="item-title">Data Visualization</h3>
-                <p class="item-desc">Data speaks louder when visualized—I enjoy designing charts that drive decisions.</p>
-            </div>
-            <div>
-                <div class="icon-wrapper"><i class="fa fa-chart-line"></i></div>
-                <h3 class="item-title">Statistical Analysis</h3>
-                <p class="item-desc">I use statistical techniques to validate assumptions and guide decision-making with confidence.</p>
-            </div>
-            <div>
-                <div class="icon-wrapper"><i class="fa fa-database"></i></div>
-                <h3 class="item-title">SQL Database</h3>
-                <p class="item-desc">SQL is my tool for organizing data, running efficient queries, and making sense of massive datasets.</p>
-            </div>
-            <div>
-                <div class="icon-wrapper"><i class="fa fa-tasks"></i></div>
-                <h3 class="item-title">Data Preprocessing</h3>
-                <p class="item-desc">I treat data preprocessing as an art—refining raw data into clean, efficient structures for efficient analysis.</p>
-            </div>
+
+    <div>
+        <div class="icon-wrapper">
+            <i class="fa fa-robot"></i>
         </div>
+        <h3 class="item-title">Machine Learning</h3>
+        <p class="item-desc">Machine learning is a tool, not a buzzword—I love optimizing algorithms and solving real business problems.</p>
+    </div>
+
+    <div>
+        <div class="icon-wrapper">
+            <i class="fa fa-comments"></i>
+        </div>
+        <h3 class="item-title">Natural Language Processing</h3>
+        <p class="item-desc">With NLP, I extract insights from messy text and turn human language into structured knowledge.</p>
+    </div>
+
+    <div>
+        <div class="icon-wrapper">
+            <i class="fa fa-chart-bar"></i>
+        </div>
+        <h3 class="item-title">Data Visualization</h3>
+        <p class="item-desc">Data speaks louder when visualized—I enjoy designing charts that drive decisions.</p>
+    </div>
+
+    <div>
+        <div class="icon-wrapper">
+            <i class="fa fa-chart-line"></i>
+        </div>
+        <h3 class="item-title">Statistical Analysis</h3>
+        <p class="item-desc">I use statistical techniques to validate assumptions and guide decision-making with confidence.</p>
+    </div>
+
+    <div>
+        <div class="icon-wrapper">
+            <i class="fa fa-database"></i>
+        </div>
+        <h3 class="item-title">SQL Database</h3>
+        <p class="item-desc">SQL is my tool for organizing data, running efficient queries, and making sense of massive datasets.</p>
+    </div>
+
+    <div>
+        <div class="icon-wrapper">
+            <i class="fa fa-tasks"></i>
+        </div>
+        <h3 class="item-title">Data Preprocessing</h3>
+        <p class="item-desc">I treat data preprocessing as an art—refining raw data into clean, efficient structures for efficient analysis.</p>
+    </div>
+
+</div>
+
     </div>
 </section>
+</div>	
 
-    <footer id="footer">
-        <ul class="icons">
-            <li><a href="https://x.com/DataSapient" class="icon brands fa-x-twitter"><span class="label">Twitter</span></a></li>
-            <li><a href="https://www.instagram.com/data_sapient/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-            <li><a href="https://github.com/suparnachowdhury" class="icon brands fa-github"><span class="label">Github</span></a></li>
-        </ul>
-        <ul class="copyright">
-            <li>All rights reserved © Suparna Chowdhury | Created by: Suparna Chowdhury | Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
-        </ul>
-    </footer>
+	
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+	
 
-    <script>
-        const accordionInputs = document.querySelectorAll('.accordion-input');
-        accordionInputs.forEach(input => {
-            input.addEventListener('change', function() {
-                if (this.checked) {
-                    accordionInputs.forEach(other => {
-                        if (other !== this) other.checked = false;
-                    });
-                }
-            });
-        });
+	<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="https://x.com/DataSapient" class="icon brands fa-x-twitter"><span class="label">Twitter</span></a></li>
+						<!--<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li> -->
+						<li><a href="https://www.instagram.com/data_sapient/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+					
+						<li><a href="https://github.com/suparnachowdhury" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						
+					</ul>
+					<ul class="copyright">
+						<li>All rights reserved © Suparna Chowdhury | Created by: Suparna Chowdhury | Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
 
-        const menuBtn = document.querySelector('.menu-button');
-        const ribNav = document.querySelector('.ribbon-nav');
-        menuBtn.addEventListener('click', () => {
-            menuBtn.classList.toggle('open');
-            ribNav.classList.toggle('show');
-        });
-    </script>
-</body>
+					</ul>
+				</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>

@@ -14,6 +14,7 @@
   gtag('js', new Date());
 
   gtag('config', 'G-RFC48RMEYG');
+  
 </script>
 		<title>Suparna Chowdhury</title>
 		<meta charset="utf-8" />
@@ -247,6 +248,12 @@
 			menuButton.classList.toggle('open');
 			ribbonNav.classList.toggle('show');
 		});
+		document.querySelectorAll('.ribbon-link').forEach(link => {
+        // If the link's href matches the current URL path
+        if (link.href === window.location.href) {
+            link.classList.add('active');
+        }
+    });
 		</script> 
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>

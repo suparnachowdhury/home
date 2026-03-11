@@ -215,6 +215,19 @@ hr, hr.major {
   font-size: 32px; /* Accent color */
 }
 
+.portfolio-btn-container {
+    margin-top: 1.5em; /* Adjust this to get the exact gap you want */
+    margin-bottom: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+/* This ensures the specific button inside doesn't have extra bottom margin */
+.portfolio-btn-container .cta__grid {
+    margin-bottom: 0 !important;
+}
+
 /* Responsive font sizes for mobile */
 @media (max-width: 768px) {
   .h1.header_main {
@@ -434,7 +447,7 @@ header.major p {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 0;
   flex-wrap: wrap;
 }
 
@@ -468,7 +481,7 @@ header.major p {
 .header-ribbon {
 	display: flex;
 	justify-content: center;
-	padding: 10px;
+	padding: 0;
 	background: transparent;
 	position: relative;
 	z-index: 10;
@@ -480,13 +493,14 @@ header.major p {
 	justify-content: space-between;
 	flex-wrap: wrap;
 	gap: 20px;
-	padding: 35px 60px;
+	padding: 15px 60px;
 	border-radius: 60px;
 	background-color: rgba(0, 0, 0, 0.15);
 	backdrop-filter: blur(4px);
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 	max-width: 80%; /* Shorter ribbon */
-	margin: 0 auto;
+	margin:-10px auto 0;
+	margin-top: -20px !important;
 	width: 100%;
 }
 .ribbon-wrapper ribbon-wrapper-mobile  {
@@ -561,10 +575,14 @@ header.major p {
 }
 
 .ribbon-nav .ribbon-link.active {
-  /* Change the background color */
-  background-color: #f0f0f0;
-  color: #333;
-  
+    background-color: #f0f0f0;
+    color: #333 !important; 
+    font-weight: 700;      
+}
+
+
+.ribbon-nav .ribbon-link.active::after {
+	display: none; /* Hide the underline for active link */
 }
 .ribbon-nav .ribbon-link:focus {
   /* Change the background color */
@@ -656,7 +674,7 @@ header.major p {
 		border-radius: 5px;
 		order: 3;
 	}
-	/* Smaller name/title font */
+	
 	
 
 
@@ -721,70 +739,6 @@ header.major p {
 }
 
 }
-
-
-
-/*Hero Portfolio */
-
-.hero__portfolio {
-    position: relative;
-    overflow-x: auto; /* Enables horizontal scroll */
-    overflow-y: hidden;
-    white-space: nowrap; /* Prevent images from wrapping */
-    scroll-behavior: smooth; /* Smooth scrolling on navigation */
-    padding: 0;
-    margin-bottom: 3rem;
-}
-
-/* Hide scrollbar for a cleaner look (Webkit browsers) */
-.hero__portfolio::-webkit-scrollbar {
-    display: none;
-}
-
-/* Hide scrollbar for IE and Edge */
-.hero__portfolio {
-    -ms-overflow-style: none;
-}
-
-/* Hide scrollbar for Firefox */
-.hero__portfolio {
-    scrollbar-width: none;
-}
-
-.hero__portfolio-content {
-    display: flex; /* Arrange images in a row */
-    gap: 10px; /* Spacing between images */
-    padding: 0 0.5rem;
-    transform: none !important; /* Ensure no lingering transforms */
-}
-
-.hero__portfolio-img {
-    height: 200px; /* Fixed height for the gallery */
-    width: auto;   /* Maintain aspect ratio */
-    border-radius: 5px;
-    object-fit: cover; /* Ensure images fill the height without distortion */
-    flex-shrink: 0; /* Prevent images from shrinking */
-    transition: transform 0.3s ease; /* Smooth hover animation */
-}
-
-.hero__portfolio-img:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-}
-
-/* Responsive image sizing */
-
- @media (max-width: 768px) {
-	 .hero__portfolio-img { height: 130px; } }
-	 
-@media (max-width: 480px) {
-	 .hero__portfolio { 
-		padding: 1rem 0.5rem; }
-	 .hero__portfolio-content { gap: 8px; } 
-	 .hero__portfolio-img { height: 100px; width: auto; } } 
-
-
-
 
 
 
@@ -4072,6 +4026,7 @@ header.major p {
 			margin-top: 2.5em;
 			margin-left: 0;
 			position: relative;
+			margin-bottom: 0;
 		}
 
 			#header .actions li:first-child {
@@ -4079,13 +4034,7 @@ header.major p {
 			}
 
 			#header .actions:after {
-				background: #ffffff;
-				content: '';
-				height: 100vh;
-				left: 50%;
-				position: absolute;
-				top: 100%;
-				width: 1px;
+				display: none;
 			}
 
 			#header .inner {
@@ -4101,8 +4050,8 @@ header.major p {
 			}
 			#header .major.no-line .inner {
 				border-bottom: none !important; 
-				padding-bottom: 0 !important;
-				padding-top: 45px !important;
+    padding-bottom: 0 !important;
+    padding-top: 10px !important;
 			}
 			
 		#header:after {

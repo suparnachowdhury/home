@@ -261,7 +261,13 @@
     menuButton.addEventListener('click', () => {
         menuButton.classList.toggle('open');
         ribbonNav.classList.toggle('show');
-    });
+    })
+    document.querySelectorAll('.ribbon-link').forEach(link => {
+        // If the link's href matches the current URL path
+        if (link.href === window.location.href) {
+            link.classList.add('active');
+        }
+    });;
 </script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/jquery.poptrox.min.js"></script>
