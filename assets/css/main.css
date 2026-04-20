@@ -1,3 +1,6 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic");
+
 /* ── DESIGN TOKENS ─────────────────────────────── */
 :root {
   --white:       #ffffff;
@@ -450,8 +453,8 @@ section { padding: 5.5rem 8%; }
 }
 .cert-icon-wrap i { color: var(--accent-dark); font-size: 0.75rem; }
 
-.cert-name { font-size: 0.96rem; font-weight: 500; color: var(--ink); line-height: 1.4; }
-.cert-meta { font-size: 0.81rem; color: var(--ink-faint); margin-top: 0.18rem; }
+.cert-name { font-size: 0.84rem; font-weight: 500; color: var(--ink); line-height: 1.4; }
+.cert-meta { font-size: 0.65rem; color: var(--ink-faint); margin-top: 0.18rem; }
 .cert-verify {
   margin-top: 0.32rem;
   display: inline-block;
