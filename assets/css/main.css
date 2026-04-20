@@ -424,7 +424,7 @@ section { padding: 5.5rem 8%; }
 .info-card:last-child { margin-bottom: 0; }
 
 .info-card-label {
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
