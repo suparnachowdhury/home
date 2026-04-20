@@ -1,352 +1,267 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RFC48RMEYG"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-RFC48RMEYG');
-    </script>
-    <title>Suparna Chowdhury</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>About Me — Suparna Chowdhury</title>
+<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-    <style>
-
-    </style>
 </head>
-<body class="is-preload">
+<body>
 
-    <section id="header">
-        <div class="header-ribbon">
-            <div class="ribbon-wrapper">
-                <a href="https://github.com/suparnachowdhury" class="logo-link">
-                    <img alt="" src="images/profile_picture.png" class="ribbon-img">
-                              </a>
-                <div class="menu-button">
-                    <button type="button">Menu</button>
-                </div>
-                <nav class="ribbon-nav">
-                    <a href="index.html" class="ribbon-link">Home</a>
-                    <a href="aboutme.html" class="ribbon-link">About Me</a>
-                    <a href="portfolio.html" class="ribbon-link">Portfolio</a>
-                    <a href="resources.html" class="ribbon-link">Resources</a>
-                    <a href="https://suparnachowdhury.medium.com/" target="_blank" class="ribbon-link">Blog</a>
-                    <a href="https://linkedin.com/in/suparna-chowdhury" target="_blank" class="ribbon-cta">
-                        <img src="images/profile_pic.jpg" alt="" class="ribbon-img">
-                        <div>Let's Connect</div>
-                    </a>
-                </nav>
-            </div>
-        </div>
-        <header class="major no-line">
-                        <h1 class="h1 header_main">
-  <span>Suparna Chowdhury</span><br />
-  <span class="h1-color">Data Scientist</span>
-</h1>
-<p>Data storyteller with a passion for clarity</p>  
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-left">
+    <img src="images/profile_picture.png" alt="Suparna Chowdhury" class="nav-avatar">
+    <span class="nav-logo">Suparna <span>Chowdhury</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="aboutme.html" class="active">About Me</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="https://suparnachowdhury.medium.com/" target="_blank">Blog</a></li>
+    <li><a href="https://linkedin.com/in/suparna-chowdhury" target="_blank" class="nav-cta">Connect</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navBtn" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-        </header>   
-    </section>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html"   onclick="closeNav()">Home</a>
+  <a href="aboutme.html" onclick="closeNav()">About Me</a>
+  <a href="portfolio.html" onclick="closeNav()">Portfolio</a>
+  <a href="resources.html" onclick="closeNav()">Resources</a>
+  <a href="https://suparnachowdhury.medium.com/" target="_blank">Blog</a>
+  <a href="https://linkedin.com/in/suparna-chowdhury" target="_blank">Connect on LinkedIn →</a>
+</div>
 
- 
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">About Me</div>
+    <h1 class="page-title">Data storyteller with<br>a passion for clarity</h1>
+    <p class="page-sub">A data scientist who believes that the best insight is the one that gets acted on — not just documented.</p>
+  </div>
+</div>
 
-<!-- Resume -->
-		<div id="resume" class="container">
-			<div class="left-section">
-    <div class="about-me">
-        <div class="about-me-header">
-            <span>ABOUT ME</span>
-        </div>
-        <div class="profile-info">
-            <img src="images/profile_picture.png" alt="Profile Picture" class="profile-pic">
-            <div class="name-title">
-                <h3>Suparna Chowdhury</h3>
-				 <h3>Data Scientist</h3>
-            </div>
-            <a href="https://linkedin.com/in/suparna-chowdhury" target="_blank" class="ribbon-linkedin">
-                <img src="images/logo/linkedIn_logo.png" alt="LinkedIn">
-              </a>
-        </div>
-        
-        <div class="summary">
-            <p>
-				I translate complex data into actionable insights, driving tangible business results. My expertise in machine learning, predictive modeling, and NLP empowers teams to make smarter, faster, data-driven decisions.
-			</p>
-            <p>
-				Whether it is building robust models in Python or crafting clear dashboards in Tableau, I bring a mix of technical depth and strategic focus — always aligning solutions with customer needs.
-			</p>
-            <p>
-				When I am not working with data, I enjoy playing the piano to relax and recharge. Known for blending adaptability with code (and the occasional chord), I am a collaborative problem-solver who transforms noise into clarity.
-			</p>
-        </div>
-		<div class="licenses-certifications">
-  <div class="about-me-header">
-            <span>EDUCATION</span>
-        </div>
+<!-- ABOUT -->
+<div class="about-section">
 
-  <div class="certification-item">
-    <div class="certification-info">
-      <div class="logo-placeholder">
-        <img src="images/logo/usa_red_logo.png" alt="University of South Alabama Logo">
+  <!-- Left: sticky profile card -->
+  <div class="reveal">
+    <div class="profile-card">
+      <img src="images/profile_picture.png" alt="Suparna Chowdhury" class="profile-photo">
+      <div class="profile-info">
+        <div class="profile-name">Suparna Chowdhury</div>
+        <div class="profile-role">Data Scientist</div>
+        <div class="profile-links">
+          <a href="https://linkedin.com/in/suparna-chowdhury" target="_blank" class="profile-link">
+            <i class="fab fa-linkedin-in"></i> LinkedIn
+          </a>
+          <a href="https://github.com/suparnachowdhury" target="_blank" class="profile-link">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a href="https://suparnachowdhury.medium.com/" target="_blank" class="profile-link">
+            <i class="fab fa-medium-m"></i> Medium Blog
+          </a>
+          <a href="https://x.com/DataSapient" target="_blank" class="profile-link">
+            <i class="fab fa-x-twitter"></i> Twitter / X
+          </a>
+          <a href="https://www.instagram.com/data_sapient/" target="_blank" class="profile-link">
+            <i class="fab fa-instagram"></i> Instagram
+          </a>
+        </div>
       </div>
-      <div class="text-info">
-        <h3>MS in Electrical Engineering</h3>
-        <p>University of South Alabama, Alabama • July 2015</p>
+    </div>
+  </div>
+
+  <!-- Right: content -->
+  <div class="about-content">
+
+    <div class="content-block reveal d1">
+      <div class="block-label">Profile</div>
+      <div class="block-title">A data scientist who speaks business</div>
+      <div class="block-body">
+        <p>I translate complex data into <strong>actionable insights that drive tangible business results</strong>. My expertise spans machine learning, predictive modeling, and NLP — helping teams make smarter, faster decisions.</p>
+        <p>Whether I'm building robust models in Python or crafting clear dashboards in Tableau, I bring <strong>technical depth and strategic focus</strong> — always aligning solutions with real customer needs.</p>
+        <p>When I'm not working with data, I enjoy playing the piano to relax and recharge. Known for blending adaptability with code (and the occasional chord), I'm a collaborative problem-solver who transforms noise into clarity.</p>
+      </div>
+    </div>
+
+    <div class="content-block reveal d1">
+      <div class="block-label">Education &amp; Credentials</div>
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-card-label">Education</div>
+          <div class="cert-row">
+            <div class="cert-icon-wrap"><i class="fas fa-graduation-cap"></i></div>
+            <div>
+              <div class="cert-name">MS in Electrical Engineering</div>
+              <div class="cert-meta">University of South Alabama, Alabama · July 2015</div>
+            </div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Certifications</div>
+          <div class="cert-row">
+            <div class="cert-icon-wrap"><i class="fas fa-certificate"></i></div>
+            <div>
+              <div class="cert-name">IBM Data Science Professional Certificate</div>
+              <div class="cert-meta">IBM · January 2023</div>
+              <a href="https://www.coursera.org/account/accomplishments/professional-cert/FXDGSC4Z3ZS8" target="_blank" class="cert-verify">Verify credential ↗</a>
+            </div>
+          </div>
+          <div class="cert-row">
+            <div class="cert-icon-wrap"><i class="fas fa-chart-pie"></i></div>
+            <div>
+              <div class="cert-name">Fundamentals of Visualization with Tableau</div>
+              <div class="cert-meta">UC Davis · January 2023</div>
+              <a href="https://coursera.org/verify/TCTLSXJ47BVP" target="_blank" class="cert-verify">Verify credential ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SERVICES on About page -->
+<div class="services-section">
+  <div class="services-sticky">
+    <div class="section-label reveal">Services</div>
+    <h2 class="section-title reveal d1">What I can<br>do for you</h2>
+    <p class="section-sub reveal d2" style="margin-top:0.65rem;">From raw data to boardroom-ready insights — I cover the full journey, technically and strategically.</p>
+  </div>
+  <div class="reveal d1">
+    <div class="acc-item">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        <span>01 &nbsp; Data Preparation &amp; Analysis</span>
+        <div class="acc-icon"><i class="fas fa-plus"></i></div>
+      </button>
+      <div class="acc-body">
+        <ul class="acc-body-inner">
+          <li>SQL queries and automated data extraction pipelines</li>
+          <li>Advanced transformation and cleaning with Python / dbt</li>
+          <li>Statistical hypothesis testing and KPI analysis</li>
+          <li>Trend identification and predictive forecasting</li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        <span>02 &nbsp; Data Visualization &amp; Reporting</span>
+        <div class="acc-icon"><i class="fas fa-plus"></i></div>
+      </button>
+      <div class="acc-body">
+        <ul class="acc-body-inner">
+          <li>Interactive Tableau and Power BI dashboards</li>
+          <li>Executive-level data storytelling for stakeholders</li>
+          <li>DAX calculations and advanced data modeling</li>
+          <li>Custom visual analytics solutions</li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        <span>03 &nbsp; Machine Learning &amp; Modeling</span>
+        <div class="acc-icon"><i class="fas fa-plus"></i></div>
+      </button>
+      <div class="acc-body">
+        <ul class="acc-body-inner">
+          <li>Supervised and unsupervised learning models</li>
+          <li>Predictive modeling for churn, LTV, and credit risk</li>
+          <li>NLP pipelines for sentiment analysis and classification</li>
+          <li>Model deployment and MLOps integration</li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        <span>04 &nbsp; AI &amp; Agentic Workflows</span>
+        <div class="acc-icon"><i class="fas fa-plus"></i></div>
+      </button>
+      <div class="acc-body">
+        <ul class="acc-body-inner">
+          <li>Custom prompt engineering for LLM optimization</li>
+          <li>Building RAG (Retrieval-Augmented Generation) systems</li>
+          <li>Developing AI agents for task automation</li>
+          <li>Exploring AGI-adjacent frameworks and neural architectures</li>
+        </ul>
       </div>
     </div>
   </div>
 </div>
-
+ <!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="pub-sticky">
+    <div class="section-label reveal">Research</div>
+    <h2 class="section-title reveal d1">Published Work</h2>
+    <p class="section-sub reveal d2" style="margin-top:0.65rem;">Peer-reviewed research spanning reinforcement learning, computer vision, and energy systems.</p>
+  </div>
+  <div class="reveal d1">
+    <div class="pub-item">
+      <div class="pub-venue">IEEE · December 2017</div>
+      <div class="pub-title">A reinforcement learning algorithm based technique for thermal energy management of a PEM fuel cell power plant</div>
+      <a href="https://ieeexplore.ieee.org/document/7356834" target="_blank" class="pub-link">Read paper <i class="fas fa-arrow-up-right-from-square"></i></a>
     </div>
-</div>
-
-			<div class="right-section">
-				<div class="licenses-certifications">
-				<div class="about-me-header">
-            <span>PUBLICATIONS</span>
-        </div>
-					
-					<div class="certification-item">
-						<div class="certification-info">
-								<div class="text-info">
-								<h3>
-A reinforcement learning algorithm based technique for thermal energy management of a PEM fuel cell power plant</h3>
-								<p>IEEE • December 2017</p>
-							</div>
-						</div>
-						<button class="show-credentials" 
-						onclick="window.open('https://ieeexplore.ieee.org/document/7356834', '_blank');">
-								<span>Show Publication</span>
-						</button>
-					</div>
-					<div class="certification-item">
-						<div class="certification-info">
-							
-							<div class="text-info">
-								<h3>
-Efficient face recognition using local derivative pattern and shifted phase-encoded fringe-adjusted joint transform correlation</h3>
-								<p>SPIE · April 2016</p>
-							</div>
-						</div>
-						<button class="show-credentials" 
-						onclick="window.open('https://www.spiedigitallibrary.org/conference-proceedings-of-spie/9845/98450I/Efficient-face-recognition-using-local-derivative-pattern-and-shifted-phase/10.1117/12.2222499.short?SSO=1', '_blank');">
-							
-							<span>Show Publication</span>
-						</button>
-					</div>
-				</div>				
-				<div class="licenses-certifications">
-					<div class="about-me-header">
-                          <span>CERTIFICATIONS</span>
-                     </div>
-					
-					<div class="certification-item">
-						<div class="certification-info">
-							<div class="logo-placeholder" >
-								<img src="images/logo/IBM_logo.svg" alt="IBM Data Science Professional Certificate">
-							</div>
-							<div class="text-info">
-								<h3>IBM Data Science Professional Certificate</h3>
-								<p>IBM • January 2023</p>
-							</div>
-						</div>
-						<button class="show-credentials" 
-						onclick="window.open('https://www.coursera.org/account/accomplishments/professional-cert/FXDGSC4Z3ZS8', '_blank');">
-							
-							<span>Show Credentials</span>
-						</button>
-					</div>
-					<div class="certification-item">
-						<div class="certification-info">
-							<div class="logo-placeholder" >
-								<img src="images/logo/ucDavis_logo.png" alt="Fundamentals of Visualization with Tableau">
-							</div>
-							<div class="text-info">
-								<h3>Fundamentals of Visualization with Tableau</h3>
-								<p>IBM • January 2023</p>
-							</div>
-						</div>
-						<button class="show-credentials" 
-						onclick="window.open('https://coursera.org/verify/TCTLSXJ47BVP', '_blank');">
-							
-							<span>Show Credentials</span>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-
-    <section id="services-new" class="container">
-        
-        <div class="split-layout">
-            <div class="content-col">
-                <header class="major no-line">
-                    <div class="about-me-header">
-            <span>WHAT I CAN DO FOR YOU</span>
-        </div></header><br>
-                   <p>As a Business Intelligence Analyst, I transform complex data into clear, actionable insights.</p>
-                </header>
-
-                <div class="accordion">
-                    <div class="accordion-item">
-                        <input type="checkbox" id="acc1" class="accordion-input">
-                        <label for="acc1" class="accordion-header">
-                            <span>1. DATA PREPARATION & ANALYSIS</span>
-                            <i class="icon fa fa-chevron-right"></i>
-                        </label>
-                        <div class="accordion-content">
-                            <ul>
-                                <li>SQL queries and automated data extraction</li>
-                                <li>Advanced data transformation and cleaning with Python/dbt</li>
-                                <li>Statistical hypothesis testing and KPI analysis</li>
-                                <li>Trend identification and predictive forecasting</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <input type="checkbox" id="acc2" class="accordion-input">
-                        <label for="acc2" class="accordion-header bebas-font">
-                            <span>2. DATA VISUALIZATION</span>
-                            <i class="icon fa fa-chevron-right"></i>
-                        </label>
-                        <div class="accordion-content">
-                            <ul>
-                                <li>Interactive Tableau and Power BI dashboards</li>
-                            <li>Executive-level data storytelling for stakeholders</li>
-                            <li>Aesthetic report building</li>
-                            <li>Custom visual analytics solutions</li> </ul>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <input type="checkbox" id="acc3" class="accordion-input">
-                        <label for="acc3" class="accordion-header bebas-font">
-                            <span>3. MACHINE LEARNING</span>
-                            <i class="icon fa fa-chevron-right"></i>
-                        </label>
-                        <div class="accordion-content">
-                            <ul>
-                               <li>Supervised and Unsupervised learning models</li>
-                            <li>Predictive modeling for customer churn and LTV</li>
-                            <li>Natural Language Processing (NLP) for sentiment analysis</li>
-                            <li>Model deployment and MLOps integration</li> </ul>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <input type="checkbox" id="acc4" class="accordion-input">
-                        <label for="acc4" class="accordion-header bebas-font">
-                            <span>4. AI & AGENTIC WORKFLOWS</span>
-                            <i class="icon fa fa-chevron-right"></i>
-                        </label>
-                        <div class="accordion-content">
-                            <ul>
-                               <li>Custom Prompt Engineering for LLM optimization</li>
-                            <li>Building RAG (Retrieval-Augmented Generation) systems</li>
-                            <li>Developing AI Agents for task automation</li>
-                            <li>Exploring AGI-adjacent frameworks and neural architectures</li> </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="image-col">
-                <span class="image fit styled-image">
-                    <img src="images/profile-photo.jpg" alt="Portrait" />
-                </span>
-            </div>
-        </div>
-    </section>
-
-    <section id="area-interst" class="container">
-    <div class="standard-container">
-        <div class="interests-header">
-            <span>Areas of Interest</span>
-        </div>
-        <div class="grid-container">
-            <div>
-                <div class="icon-wrapper"><i class="fa fa-robot"></i></div>
-                <h3 class="item-title">Machine Learning</h3>
-                <p class="item-desc">Machine learning is a tool, not a buzzword—I love optimizing algorithms and solving real business problems.</p>
-            </div>
-            <div>
-                <div class="icon-wrapper"><i class="fa fa-comments"></i></div>
-                <h3 class="item-title">Natural Language Processing</h3>
-                <p class="item-desc">With NLP, I extract insights from messy text and turn human language into structured knowledge.</p>
-            </div>
-            <div>
-                <div class="icon-wrapper"><i class="fa fa-chart-bar"></i></div>
-                <h3 class="item-title">Data Visualization</h3>
-                <p class="item-desc">Data speaks louder when visualized—I enjoy designing charts that drive decisions.</p>
-            </div>
-            <div>
-                <div class="icon-wrapper"><i class="fa fa-chart-line"></i></div>
-                <h3 class="item-title">Statistical Analysis</h3>
-                <p class="item-desc">I use statistical techniques to validate assumptions and guide decision-making with confidence.</p>
-            </div>
-            <div>
-                <div class="icon-wrapper"><i class="fa fa-database"></i></div>
-                <h3 class="item-title">SQL Database</h3>
-                <p class="item-desc">SQL is my tool for organizing data, running efficient queries, and making sense of massive datasets.</p>
-            </div>
-            <div>
-                <div class="icon-wrapper"><i class="fa fa-tasks"></i></div>
-                <h3 class="item-title">Data Preprocessing</h3>
-                <p class="item-desc">I treat data preprocessing as an art—refining raw data into clean, efficient structures for efficient analysis.</p>
-            </div>
-        </div>
+    <div class="pub-item">
+      <div class="pub-venue">SPIE · April 2016</div>
+      <div class="pub-title">Efficient face recognition using local derivative pattern and shifted phase-encoded fringe-adjusted joint transform correlation</div>
+      <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/9845/98450I/Efficient-face-recognition-using-local-derivative-pattern-and-shifted-phase/10.1117/12.2222499.short?SSO=1" target="_blank" class="pub-link">Read paper <i class="fas fa-arrow-up-right-from-square"></i></a>
     </div>
+  </div>
 </section>
 
-    <footer id="footer">
-        <ul class="icons">
-            <li><a href="https://x.com/DataSapient" class="icon brands fa-x-twitter"><span class="label">Twitter</span></a></li>
-            <li><a href="https://www.instagram.com/data_sapient/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-            <li><a href="https://github.com/suparnachowdhury" class="icon brands fa-github"><span class="label">Github</span></a></li>
-        </ul>
-        <ul class="copyright">
-            <li>All rights reserved © Suparna Chowdhury | Created by: Suparna Chowdhury | Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
-        </ul>
-    </footer>
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-name">Suparna Chowdhury</div>
+    <div class="footer-sub">Data Scientist · ML Engineer · BI Analyst</div>
+  </div>
+  <div class="footer-icons">
+    <a href="https://github.com/suparnachowdhury" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/suparna-chowdhury" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://suparnachowdhury.medium.com/" target="_blank"><i class="fab fa-medium-m"></i></a>
+    <a href="https://x.com/DataSapient" target="_blank"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://www.instagram.com/data_sapient/" target="_blank"><i class="fab fa-instagram"></i></a>
+  </div>
+  <div class="footer-copy">© 2025 Suparna Chowdhury. All rights reserved.</div>
+</footer>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+<script>
+function toggleAcc(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  document.querySelectorAll('.acc-btn.open').forEach(b => {
+    b.classList.remove('open');
+    b.nextElementSibling.style.maxHeight = null;
+  });
+  if (!isOpen) {
+    btn.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+  }
+}
+const navBtn = document.getElementById('navBtn');
+const mobileNav = document.getElementById('mobileNav');
+navBtn.addEventListener('click', () => mobileNav.classList.toggle('open'));
+function closeNav() { mobileNav.classList.remove('open'); }
 
-    <script>
-        const accordionInputs = document.querySelectorAll('.accordion-input');
-        accordionInputs.forEach(input => {
-            input.addEventListener('change', function() {
-                if (this.checked) {
-                    accordionInputs.forEach(other => {
-                        if (other !== this) other.checked = false;
-                    });
-                }
-            });
-        });
-
-        const menuBtn = document.querySelector('.menu-button');
-        const ribNav = document.querySelector('.ribbon-nav');
-        menuBtn.addEventListener('click', () => {
-            menuBtn.classList.toggle('open');
-            ribNav.classList.toggle('show');
-        });
-        document.querySelectorAll('.ribbon-link').forEach(link => {
-        // If the link's href matches the current URL path
-        if (link.href === window.location.href) {
-            link.classList.add('active');
-        }
-    });
-    </script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
