@@ -10,6 +10,211 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <style>
 
+/* ─── HERO RESUME LINK ─────────────────────────────── */
+.btn-resume {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: transparent;
+  color: var(--ink-muted);
+  padding: 0.78rem 1.6rem;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  border: 1.5px dashed var(--border-mid);
+  transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s;
+}
+.btn-resume i {
+  font-size: 0.82rem;
+  color: var(--accent-dark);
+  transition: transform 0.2s;
+}
+.btn-resume:hover {
+  border-color: var(--accent-dark);
+  color: var(--accent-dark);
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+}
+.btn-resume:hover i {
+  transform: translateY(2px);
+}
+
+/* ─── HERO ACTIONS ROW (3 buttons) ────────────────── */
+.hero-actions {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ─── FEATURED PROJECT CARD (hero right) ──────────── */
+.featured-project-card {
+  margin-top: 1.25rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem 1.5rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  display: block;
+  transition: box-shadow 0.25s, transform 0.22s, border-color 0.22s;
+  position: relative;
+  overflow: hidden;
+}
+.featured-project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.featured-project-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.fp-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+.fp-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.fp-label::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: block;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.75); }
+}
+
+.fp-arrow {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+}
+.featured-project-card:hover .fp-arrow {
+  background: var(--accent);
+  transform: translate(2px, -2px);
+}
+.fp-arrow i { font-size: 0.55rem; color: var(--accent-dark); }
+
+.fp-title {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  margin-bottom: 0.45rem;
+}
+
+.fp-desc {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 0.85rem;
+}
+
+.fp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.fp-tag {
+  font-size: 0.63rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  padding: 0.22rem 0.6rem;
+  border-radius: 100px;
+}
+
+/* ─── SECTION RENAME: Featured Portfolio ──────────── */
+/* No structural change needed — just label text updates in HTML */
+
+/* ─── RESUME STRIP below hero (subtle) ─────────────── */
+.hero-resume-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-page);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  max-width: 380px;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+.hero-resume-strip:hover {
+  border-color: var(--accent-dark);
+  background: var(--accent-soft);
+  transform: translateX(3px);
+}
+.hero-resume-strip-icon {
+  width: 34px; height: 34px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.hero-resume-strip-icon i { color: var(--accent-dark); font-size: 0.85rem; }
+.hero-resume-strip-text {}
+.hero-resume-strip-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink);
+  display: block;
+  line-height: 1.3;
+}
+.hero-resume-strip-sub {
+  font-size: 0.65rem;
+  color: var(--ink-faint);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.hero-resume-strip-cta {
+  margin-left: auto;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.hero-resume-strip-cta i { font-size: 0.55rem; }
+
 </style>
 </head>
 <body>
@@ -53,11 +258,31 @@
     <p class="hero-desc">
       I build machine learning models, interactive dashboards, and NLP systems that give teams the clarity to act — not just analyze.
     </p>
+
+    <!-- PRIMARY ACTIONS -->
     <div class="hero-actions">
-      <a href="portfolio.html" class="btn-primary">View Portfolio</a>
-      <a href="aboutme.html" class="btn-outline">About Me</a>
+      <a href="#portfolio" class="btn-primary">
+        <i class="fas fa-layer-group" style="font-size:0.7rem; margin-right:0.35rem;"></i>Featured Portfolio
+      </a>
+      <a href="portfolio.html" class="btn-outline">All Projects</a>
+      
     </div>
+
+    <!-- RESUME STRIP -->
+    <a href="resume.pdf" target="_blank" class="hero-resume-strip">
+      <div class="hero-resume-strip-icon">
+        <i class="fas fa-file-lines"></i>
+      </div>
+      <div class="hero-resume-strip-text">
+        <span class="hero-resume-strip-title">Suparna Chowdhury</span>
+        <span class="hero-resume-strip-sub">PDF · Updated 2026</span>
+      </div>
+      <div class="hero-resume-strip-cta">
+        View Resume<i class="fas fa-arrow-up-right-from-square"></i>
+      </div>
+    </a>
   </div>
+
   <div class="hero-right">
     <div class="tech-panel">
       <div class="tech-panel-label">Tech Stack</div>
@@ -71,14 +296,27 @@
         <span class="tech-tag"><i class="fas fa-comment-dots"></i> NLP</span>
         <span class="tech-tag"><i class="fas fa-layer-group"></i> Feature Engineering</span>
         <span class="tech-tag"><i class="fas fa-code-branch"></i> MLOps</span>
-        <span class="tech-tag"><i class="fas fa-project-diagram"></i> PCA</span>
+        <span class="tech-tag"><i class="fas fa-project-diagram"></i> GAN</span>
         <span class="tech-tag"><i class="fas fa-bolt"></i> RAG Systems</span>
         <span class="tech-tag"><i class="fas fa-cogs"></i> Reinforcement Learning</span>
       </div>
     </div>
-    <div class="hero-quote">
-      "I transform noise into clarity — blending technical depth with strategic focus to deliver insights that actually move the needle."
-    </div>
+
+    <!-- FEATURED PROJECT CARD -->
+    <a href="#portfolio"
+       class="featured-project-card">
+      <div class="fp-eyebrow">
+        <span class="fp-label">Featured Project</span>
+        <div class="fp-arrow"><i class="fas fa-arrow-up-right"></i></div>
+      </div>
+      <div class="fp-title">Data Governance &amp; Compliance Risk Dashboard</div>
+      <div class="fp-desc">Translated 5,500 audit records into a financial exposure framework — quantifying compliance gaps in euros for executive-level decision-making.</div>
+      <div class="fp-tags">
+        <span class="fp-tag">Power BI</span>
+        <span class="fp-tag">DAX</span>
+        <span class="fp-tag">Risk Modeling</span>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -90,10 +328,12 @@
     <div class="section-label reveal">Profile</div>
     <h2 class="section-title reveal d1">A data scientist who speaks business</h2>
     <div class="about-body reveal d2">
-      <p>I translate complex data into <strong>actionable insights that drive tangible business results</strong>. My expertise spans machine learning, predictive modeling, and NLP — helping teams make smarter, faster decisions.</p>
-      <p>Whether I'm building robust models in Python or crafting clear dashboards in Tableau, I bring <strong>technical depth and strategic focus</strong> — always aligning solutions with real customer needs.</p>
-      <p>When I'm not working with data, I enjoy playing the piano. Known for blending adaptability with code (and the occasional chord), I'm a collaborative problem-solver who transforms noise into clarity.</p>
+      <p>I translate <strong> data into decisions that drive real business results</strong> — bridging technical innovation and strategic thinking across machine learning, predictive modeling, and NLP.</p>
+      <p>From building robust models in Python to designing A/B tests and crafting dashboards in Tableau and Power BI, I deliver cost-effective solutions grounded in customer needs. My peer-reviewed publications reflect a commitment to staying at the forefront of the field.</p>
+      <p>My toolkit spans Python, SQL, Power BI, Tableau, and Excel — but what sets me apart is translating technical complexity into narratives that resonate with both engineers and executives.</p>
+    <p>Off the clock, I play piano — and whether it's data or music, I'm always finding patterns in the noise.</p>
     </div>
+    
   </div>
   <div>
     <div class="info-card reveal">
@@ -124,6 +364,7 @@
           <a href="https://coursera.org/verify/TCTLSXJ47BVP" target="_blank" class="cert-verify">Verify credential ↗</a>
         </div>
       </div>
+      
     </div>
     <div class="info-card reveal d2">
       <div class="info-card-label">Find me online</div>
@@ -133,6 +374,27 @@
         <a href="https://linkedin.com/in/suparna-chowdhury" target="_blank" class="online-link"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
         <a href="https://x.com/DataSapient" target="_blank" class="online-link"><i class="fab fa-x-twitter"></i> Twitter</a>
       </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="pub-sticky">
+    <div class="section-label reveal">Research</div>
+    <h2 class="section-title reveal d1">Published Work</h2>
+    <p class="section-sub reveal d2" style="margin-top:0.65rem;">Peer-reviewed research spanning reinforcement learning, computer vision, and energy systems.</p>
+  </div>
+  <div class="reveal d1">
+    <div class="pub-item">
+      <div class="pub-venue">IEEE · December 2017</div>
+      <div class="pub-title">A reinforcement learning algorithm based technique for thermal energy management of a PEM fuel cell power plant</div>
+      <a href="https://ieeexplore.ieee.org/document/7356834" target="_blank" class="pub-link">Read paper <i class="fas fa-arrow-up-right-from-square"></i></a>
+    </div>
+    <div class="pub-item">
+      <div class="pub-venue">SPIE · April 2016</div>
+      <div class="pub-title">Efficient face recognition using local derivative pattern and shifted phase-encoded fringe-adjusted joint transform correlation</div>
+      <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/9845/98450I/Efficient-face-recognition-using-local-derivative-pattern-and-shifted-phase/10.1117/12.2222499.short?SSO=1" target="_blank" class="pub-link">Read paper <i class="fas fa-arrow-up-right-from-square"></i></a>
     </div>
   </div>
 </section>
@@ -208,31 +470,31 @@
 
 <div class="divider"></div>
 
-<!-- SELECTED PROJECTS -->
+<!-- FEATURED PORTFOLIO -->
 <section id="portfolio">
   <div class="section-header">
     <div class="section-label reveal">Work</div>
-    <h2 class="section-title reveal d1">Selected Projects</h2>
-    <p class="section-sub reveal d2">A curated look at recent work — from credit risk modeling to urban pattern discovery.</p>
+    <h2 class="section-title reveal d1">Featured Portfolio</h2>
+    <p class="section-sub reveal d2">A curated look at high-impact work — from credit risk modeling to urban pattern discovery.</p>
   </div>
 
   <div class="portfolio-grid">
 
-    <!-- Featured: Data Governance — side-by-side layout, same row height as neighbour -->
+    <!-- Featured: Data Governance -->
     <a href="https://github.com/suparnachowdhury/Enterprise-Data-Governance-Compliance-Risk-Dashboard/tree/main"
    target="_blank" class="p-card-featured reveal">
-  <div class="p-card-featured-img-wrap">
-    <img src="images/projects/pic_project_governance.png" class="p-card-featured-img" alt="Data Governance Dashboard">
-  </div>
-  <div class="p-card-featured-body">
-    <div class="p-card-tag">Power BI · DAX · Risk Modeling</div>
-    <div class="p-card-title">Data Governance &amp; Compliance Risk Dashboard</div>
-    <div class="p-card-desc">Translated 5,500 audit records into a financial exposure framework, quantifying compliance gaps in euros for executive action.</div>
-    <div class="p-card-foot">View Project <i class="fas fa-arrow-right"></i></div>
-  </div>
-</a>
+      <div class="p-card-featured-img-wrap">
+        <img src="images/projects/pic_project_governance.png" class="p-card-featured-img" alt="Data Governance Dashboard">
+      </div>
+      <div class="p-card-featured-body">
+        <div class="p-card-tag">Power BI · DAX · Risk Modeling</div>
+        <div class="p-card-title">Data Governance &amp; Compliance Risk Dashboard</div>
+        <div class="p-card-desc">Translated 5,500 audit records into a financial exposure framework, quantifying compliance gaps in euros for executive action.</div>
+        <div class="p-card-foot">View Project <i class="fas fa-arrow-right"></i></div>
+      </div>
+    </a>
 
-    <!-- 3rd card: Credit Risk — sits in col 3, same row -->
+    <!-- Credit Risk -->
     <a href="https://github.com/suparnachowdhury/Credit-Risk-Analysis/" target="_blank" class="p-card reveal d1">
       <div class="p-card-img-wrap">
         <img src="images/projects/pic_credit_risk.png" class="p-card-img" alt="Credit Risk">
@@ -245,7 +507,7 @@
       </div>
     </a>
 
-    <!-- Row 2: 3 equal cards -->
+    <!-- Row 2 -->
     <a href="https://github.com/suparnachowdhury/advanced-clustering-analysis" target="_blank" class="p-card reveal">
       <div class="p-card-img-wrap">
         <img src="images/projects/pic_project_clustering.png" class="p-card-img" alt="Clustering">
