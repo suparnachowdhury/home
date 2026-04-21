@@ -1,0 +1,1040 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RFC48RMEYG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RFC48RMEYG');
+    </script>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>K-Means Clustering — Suparna Chowdhury</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+    <style>
+        :root {
+            --white:       #ffffff;
+            --bg-page:     #F7F8FC;
+            --bg-alt:      #f0f8ff;
+            --accent:      #72f3c8;
+            --accent-dark: #0d9e78;
+            --accent-soft: #e4fdf5;
+            --ink:         #111827;
+            --ink-mid:     #374151;
+            --ink-muted:   #6B7280;
+            --ink-faint:   #9CA3AF;
+            --border:      #e5e7eb;
+            --border-mid:  #d1d5db;
+            --code-bg:     #0f1117;
+            --code-fg:     #e2e8f0;
+            --radius-sm:   4px;
+            --radius-md:   8px;
+            --radius-lg:   14px;
+            --shadow-sm:   0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md:   0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg:   0 8px 32px rgba(0,0,0,0.10);
+            --font-serif:  'Lora', Georgia, serif;
+            --font-sans:   'Inter', system-ui, sans-serif;
+            --font-mono:   'JetBrains Mono', 'Courier New', monospace;
+            --nav-h:       68px;
+            --article-w:   740px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-page);
+            color: var(--ink);
+            font-size: 16px;
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 200;
+            height: var(--nav-h);
+            background: rgba(247,248,252,0.96);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+        }
+        .nav-left {
+            display: flex; align-items: center; gap: 0.85rem; text-decoration: none;
+        }
+        .nav-avatar {
+            width: 36px; height: 36px; border-radius: 50%;
+            object-fit: cover; border: 2px solid var(--accent);
+            display: block; flex-shrink: 0;
+        }
+        .nav-logo {
+            font-family: var(--font-serif); font-size: 1.1rem;
+            color: var(--ink); text-decoration: none; font-weight: 600; white-space: nowrap;
+        }
+        .nav-logo span { color: var(--accent-dark); }
+        .nav-links { display: flex; align-items: center; gap: 0.15rem; list-style: none; }
+        .nav-links a {
+            color: var(--ink-muted); text-decoration: none; font-size: 0.78rem;
+            font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+            padding: 0.42rem 0.8rem; border-radius: var(--radius-sm);
+            transition: color 0.18s, background 0.18s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--ink); background: var(--border); }
+        .nav-cta {
+            background: var(--ink) !important; color: var(--white) !important;
+            border-radius: var(--radius-sm) !important; margin-left: 0.5rem;
+        }
+        .nav-cta:hover { background: var(--accent-dark) !important; color: var(--white) !important; }
+        .nav-hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            background: none; border: none; cursor: pointer; padding: 4px;
+        }
+        .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--ink); }
+        .mobile-nav {
+            display: none; position: fixed; inset: var(--nav-h) 0 0;
+            background: var(--white); z-index: 199; flex-direction: column;
+            padding: 2rem 6%; border-top: 1px solid var(--border); overflow-y: auto;
+        }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a {
+            color: var(--ink-mid); text-decoration: none; font-size: 0.82rem;
+            font-weight: 500; padding: 0.9rem 0; border-bottom: 1px solid var(--border);
+            letter-spacing: 0.04em; text-transform: uppercase;
+        }
+
+        /* ── HERO ── */
+        .article-hero {
+            padding-top: calc(var(--nav-h) + 4rem);
+            padding-bottom: 3.5rem;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding-left: 8%; padding-right: 8%;
+        }
+        .article-hero-inner {
+            max-width: var(--article-w);
+        }
+        .breadcrumb {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em;
+            text-transform: uppercase; color: var(--ink-faint);
+            margin-bottom: 1.5rem;
+        }
+        .breadcrumb a { color: var(--accent-dark); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb-sep { color: var(--border-mid); }
+
+        .article-tag {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: var(--accent-soft); color: var(--accent-dark);
+            font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase; padding: 0.3rem 0.9rem;
+            border-radius: 100px; border: 1px solid var(--accent);
+            margin-bottom: 1.25rem;
+        }
+
+        .article-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+            font-weight: 600; line-height: 1.2;
+            color: var(--ink); margin-bottom: 1rem;
+        }
+        .article-subtitle {
+            font-size: 1.05rem; color: var(--ink-muted); font-weight: 300;
+            line-height: 1.75; margin-bottom: 2rem;
+        }
+
+        .article-meta {
+            display: flex; align-items: center; gap: 1.5rem;
+            flex-wrap: wrap; padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        .meta-author {
+            display: flex; align-items: center; gap: 0.6rem;
+        }
+        .meta-avatar {
+            width: 38px; height: 38px; border-radius: 50%;
+            object-fit: cover; border: 2px solid var(--accent);
+        }
+        .meta-name { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+        .meta-role { font-size: 0.72rem; color: var(--ink-muted); }
+        .meta-divider { width: 1px; height: 32px; background: var(--border); }
+        .meta-info { font-size: 0.8rem; color: var(--ink-muted); display: flex; flex-direction: column; gap: 0.1rem; }
+        .meta-info strong { color: var(--ink-mid); font-weight: 500; }
+
+        .article-tags-row {
+            display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem;
+        }
+        .pill {
+            background: var(--bg-page); color: var(--ink-mid); font-size: 0.7rem;
+            font-weight: 500; padding: 0.25rem 0.75rem; border-radius: 100px;
+            border: 1px solid var(--border-mid); letter-spacing: 0.04em;
+        }
+
+        /* ── LAYOUT: sidebar TOC + article body ── */
+        .article-layout {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 8% 6rem;
+            display: grid;
+            grid-template-columns: 1fr 220px;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        /* ── ARTICLE BODY ── */
+        .article-body { min-width: 0; }
+
+        .article-body h2 {
+            font-family: var(--font-serif);
+            font-size: 1.45rem; font-weight: 600;
+            color: var(--ink); margin: 3rem 0 1rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--accent);
+            display: flex; align-items: center; gap: 0.6rem;
+        }
+        .article-body h2 .h-num {
+            font-family: var(--font-mono); font-size: 0.68rem;
+            color: var(--accent-dark); font-weight: 500;
+            background: var(--accent-soft); padding: 0.15rem 0.5rem;
+            border-radius: var(--radius-sm); letter-spacing: 0.08em;
+        }
+        .article-body h3 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem; font-weight: 600;
+            color: var(--ink-mid); margin: 2rem 0 0.75rem;
+        }
+
+        .article-body p {
+            color: var(--ink-mid); font-size: 0.975rem;
+            line-height: 1.85; margin-bottom: 1.1rem; font-weight: 300;
+        }
+        .article-body p strong { color: var(--ink); font-weight: 600; }
+
+        .article-body ul, .article-body ol {
+            color: var(--ink-mid); font-size: 0.975rem; font-weight: 300;
+            padding-left: 1.4rem; margin-bottom: 1.25rem; line-height: 1.8;
+        }
+        .article-body li { margin-bottom: 0.4rem; }
+        .article-body li strong { color: var(--ink); font-weight: 600; }
+
+        /* Intro callout box */
+        .intro-callout {
+            background: var(--accent-soft); border-left: 3px solid var(--accent-dark);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 1.25rem 1.5rem; margin: 1.5rem 0 2.5rem;
+            font-size: 0.95rem; color: var(--ink-mid);
+            line-height: 1.8; font-weight: 300;
+        }
+        .intro-callout strong { color: var(--accent-dark); }
+
+        /* Key concept card */
+        .concept-card {
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 1.75rem;
+            margin: 1.5rem 0; box-shadow: var(--shadow-sm);
+        }
+        .concept-card-title {
+            font-family: var(--font-serif); font-size: 0.8rem;
+            font-weight: 600; color: var(--accent-dark);
+            text-transform: uppercase; letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Steps list */
+        .steps-list {
+            list-style: none !important;
+            padding-left: 0 !important;
+            counter-reset: step-counter;
+        }
+        .steps-list li {
+            counter-increment: step-counter;
+            display: flex; gap: 1rem; align-items: flex-start;
+            margin-bottom: 0.9rem;
+        }
+        .steps-list li::before {
+            content: counter(step-counter);
+            min-width: 28px; height: 28px; border-radius: 50%;
+            background: var(--ink); color: var(--white);
+            font-size: 0.72rem; font-weight: 600;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; margin-top: 0.1rem;
+            font-family: var(--font-mono);
+        }
+
+        /* ── CODE BLOCKS ── */
+        .code-wrap {
+            margin: 1.5rem 0 2rem;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid #1e2533;
+        }
+        .code-header {
+            background: #1a2030; padding: 0.65rem 1.2rem;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .code-dots { display: flex; gap: 0.4rem; }
+        .code-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+        }
+        .code-dot-r { background: #ff5f56; }
+        .code-dot-y { background: #ffbd2e; }
+        .code-dot-g { background: #27c93f; }
+        .code-lang {
+            font-family: var(--font-mono); font-size: 0.65rem;
+            color: #6b7a99; letter-spacing: 0.1em; text-transform: uppercase;
+        }
+        .code-body {
+            background: var(--code-bg);
+            overflow-x: auto;
+        }
+        .code-body pre {
+            padding: 1.5rem 1.25rem;
+            margin: 0;
+        }
+        .code-body code {
+            font-family: var(--font-mono); font-size: 0.82rem;
+            line-height: 1.8; color: var(--code-fg);
+            white-space: pre;
+        }
+        /* Syntax highlight classes */
+        .kw { color: #c792ea; }  /* keyword */
+        .fn { color: #82aaff; }  /* function */
+        .st { color: #c3e88d; }  /* string */
+        .cm { color: #546e7a; font-style: italic; } /* comment */
+        .nm { color: #f78c6c; }  /* number */
+        .im { color: #89ddff; }  /* import / operator */
+
+        /* ── PROJECT IMAGES ── */
+        .figure {
+            margin: 2rem 0;
+        }
+        .figure img {
+            width: 100%;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-md);
+            display: block;
+        }
+        /* Placeholder when real image not yet uploaded */
+        .figure-placeholder {
+            width: 100%;
+            border-radius: var(--radius-md);
+            border: 1px dashed var(--border-mid);
+            background: var(--bg-page);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 3rem 1rem;
+            color: var(--ink-faint);
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        .figure-placeholder i { font-size: 2rem; color: var(--border-mid); }
+        .figure-caption {
+            font-size: 0.78rem; color: var(--ink-faint); font-style: italic;
+            margin-top: 0.6rem; text-align: center; line-height: 1.6;
+        }
+        .figure-caption strong { color: var(--ink-muted); font-style: normal; }
+
+        /* ── DATA TABLE ── */
+        .table-wrap {
+            overflow-x: auto; margin: 1.75rem 0;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        thead { background: var(--ink); color: var(--white); }
+        thead th {
+            padding: 0.9rem 1rem; text-align: left;
+            font-weight: 600; font-size: 0.78rem;
+            letter-spacing: 0.05em; white-space: nowrap;
+        }
+        tbody tr { border-bottom: 1px solid var(--border); }
+        tbody tr:last-child { border-bottom: none; }
+        tbody tr:nth-child(even) { background: var(--bg-page); }
+        tbody td { padding: 0.85rem 1rem; color: var(--ink-mid); vertical-align: top; }
+        .badge {
+            display: inline-block; padding: 0.2rem 0.6rem;
+            border-radius: 100px; font-size: 0.68rem; font-weight: 600;
+        }
+        .badge-0 { background: #fef3c7; color: #92400e; }
+        .badge-1 { background: #d1fae5; color: #065f46; }
+        .badge-2 { background: #fee2e2; color: #991b1b; }
+        .badge-3 { background: #dbeafe; color: #1e40af; }
+
+        /* ── BLOCKQUOTE (insight box) ── */
+        .insight {
+            border: 1px solid var(--accent);
+            border-left: 4px solid var(--accent-dark);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            background: var(--accent-soft);
+            padding: 1.25rem 1.5rem;
+            margin: 1.75rem 0;
+        }
+        .insight-label {
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--accent-dark); margin-bottom: 0.4rem;
+        }
+        .insight p {
+            margin: 0; font-size: 0.92rem; color: var(--ink-mid); font-weight: 400;
+        }
+
+        /* ── SECTION DIVIDER ── */
+        .section-divider {
+            display: flex; align-items: center; gap: 1rem;
+            margin: 2.5rem 0 0;
+        }
+        .section-divider::before, .section-divider::after {
+            content: ''; flex: 1; height: 1px; background: var(--border);
+        }
+        .section-divider-icon { color: var(--accent-dark); font-size: 0.75rem; }
+
+        /* ── TOC SIDEBAR ── */
+        .toc-sidebar {
+            position: sticky; top: calc(var(--nav-h) + 2rem);
+        }
+        .toc-label {
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.16em;
+            text-transform: uppercase; color: var(--ink-faint);
+            margin-bottom: 1rem;
+        }
+        .toc-list { list-style: none; padding: 0; }
+        .toc-list li { margin-bottom: 0.15rem; }
+        .toc-list a {
+            font-size: 0.78rem; color: var(--ink-muted); text-decoration: none;
+            font-weight: 400; display: block; padding: 0.3rem 0.6rem;
+            border-left: 2px solid transparent; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            transition: all 0.18s; line-height: 1.4;
+        }
+        .toc-list a:hover, .toc-list a.toc-active {
+            color: var(--accent-dark); border-left-color: var(--accent);
+            background: var(--accent-soft);
+        }
+        .toc-sub a { font-size: 0.72rem; padding-left: 1.2rem; }
+
+        .toc-github {
+            margin-top: 2rem; padding: 1rem;
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: var(--radius-md); box-shadow: var(--shadow-sm);
+        }
+        .toc-github a {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.78rem; font-weight: 600; color: var(--ink);
+            text-decoration: none; transition: color 0.2s;
+        }
+        .toc-github a:hover { color: var(--accent-dark); }
+        .toc-github-sub { font-size: 0.7rem; color: var(--ink-faint); margin-top: 0.3rem; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--ink); color: rgba(255,255,255,0.45);
+            padding: 3rem 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1.5rem;
+        }
+        .footer-name { font-family: var(--font-serif); color: var(--white); font-size: 1rem; margin-bottom: 0.15rem; font-weight: 600; }
+        .footer-sub { font-size: 0.76rem; }
+        .footer-icons { display: flex; gap: 0.65rem; }
+        .footer-icons a {
+            width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.78rem;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .footer-icons a:hover { border-color: var(--accent); color: var(--accent); }
+        .footer-copy { font-size: 0.7rem; }
+
+        /* ── REVEAL ── */
+        .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1100px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: flex; }
+            .article-layout { grid-template-columns: 1fr; gap: 0; }
+            .toc-sidebar { display: none; }
+        }
+        @media (max-width: 600px) {
+            .article-hero { padding-left: 5%; padding-right: 5%; }
+            .article-layout { padding: 2.5rem 5% 4rem; }
+            footer { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+    <a href="index.html" class="nav-left">
+        <img src="images/profile_picture.png" alt="Suparna Chowdhury" class="nav-avatar">
+        <span class="nav-logo">Suparna <span>Chowdhury</span></span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutme.html">About Me</a></li>
+        <li><a href="portfolio.html" class="active">Portfolio</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="https://suparnachowdhury.medium.com/" target="_blank">Blog</a></li>
+        <li><a href="https://linkedin.com/in/suparna-chowdhury" target="_blank" class="nav-cta">Connect</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeNav()">Home</a>
+    <a href="aboutme.html" onclick="closeNav()">About Me</a>
+    <a href="portfolio.html" onclick="closeNav()">Portfolio</a>
+    <a href="resources.html" onclick="closeNav()">Resources</a>
+    <a href="https://suparnachowdhury.medium.com/" target="_blank">Blog</a>
+    <a href="https://linkedin.com/in/suparna-chowdhury" target="_blank">Connect on LinkedIn →</a>
+</div>
+
+<!-- ── HERO ── -->
+<div class="article-hero">
+    <div class="article-hero-inner">
+        <div class="breadcrumb">
+            <a href="portfolio.html">Portfolio</a>
+            <span class="breadcrumb-sep">›</span>
+            Machine Learning
+        </div>
+        <div class="article-tag"><i class="fa fa-circle-nodes"></i>&nbsp; Unsupervised Learning</div>
+        <h1 class="article-title">Understanding K-Means Clustering:<br>A Practical Guide</h1>
+        <p class="article-subtitle">A comprehensive walkthrough — from algorithm intuition to feature engineering and final cluster profiling using real-world city lifestyle data.</p>
+
+        <div class="article-meta">
+            <div class="meta-author">
+                <img src="images/profile_picture.png" alt="Suparna Chowdhury" class="meta-avatar">
+                <div>
+                    <div class="meta-name">Suparna Chowdhury</div>
+                    <div class="meta-role">Data Scientist · ML Engineer</div>
+                </div>
+            </div>
+            <div class="meta-divider"></div>
+            <div class="meta-info">
+                <span><strong>Published</strong> · June 2025</span>
+                <span><strong>Dataset</strong> · City Lifestyle (Kaggle)</span>
+            </div>
+            <div class="meta-divider"></div>
+            <div class="meta-info">
+                <span><strong>Tools</strong> · Python · scikit-learn</span>
+                <span><strong>Read time</strong> · ~12 min</span>
+            </div>
+        </div>
+
+        <div class="article-tags-row">
+            <span class="pill">K-Means</span>
+            <span class="pill">Clustering</span>
+            <span class="pill">Unsupervised ML</span>
+            <span class="pill">PCA</span>
+            <span class="pill">Feature Engineering</span>
+            <span class="pill">Scikit-learn</span>
+            <span class="pill">Seaborn</span>
+        </div>
+    </div>
+</div>
+
+<!-- ── MAIN LAYOUT ── -->
+<div class="article-layout">
+
+    <!-- ── ARTICLE BODY ── -->
+    <article class="article-body">
+
+        <div class="intro-callout reveal">
+            In machine learning, <strong>K-Means clustering</strong> is one of the most popular algorithms for uncovering hidden patterns in data. It is an <strong>unsupervised learning technique</strong> — meaning it does not rely on labeled data — and is widely used for customer segmentation, image compression, and pattern recognition.
+        </div>
+
+        <!-- 01 What Is K-Means -->
+        <h2 id="what"><span class="h-num">01</span> What Is K-Means Clustering?</h2>
+        <p>K-Means clustering splits a dataset into <strong>K distinct groups</strong> (clusters). The goal is to group data points that are similar to each other while keeping different clusters as distinct as possible. The term "means" refers to the average position of points in each cluster — known as the <strong>centroid</strong>.</p>
+
+        <div class="concept-card reveal">
+            <div class="concept-card-title">Core Idea</div>
+            <p style="margin:0; font-size:0.93rem;">Every data point belongs to the cluster whose centroid is closest to it. The algorithm iteratively refines these assignments until the cluster boundaries stabilize.</p>
+        </div>
+
+        <!-- How it Works -->
+        <h2 id="how"><span class="h-num">02</span> How It Works</h2>
+        <ol class="steps-list reveal">
+            <li><strong>Choose K</strong> — decide how many clusters you want to form.</li>
+            <li><strong>Initialize centroids</strong> — randomly select K data points as starting centers.</li>
+            <li><strong>Assign points</strong> — each data point is assigned to the nearest centroid (typically by Euclidean distance).</li>
+            <li><strong>Update centroids</strong> — recalculate each centroid as the mean of all points assigned to it.</li>
+            <li><strong>Repeat</strong> — continue reassigning and updating until clusters stabilize (no major changes).</li>
+        </ol>
+
+        <!-- Setup -->
+        <h2 id="setup"><span class="h-num">03</span> Implementing K-Means in Python</h2>
+        <p>We use Python's <code style="font-family:var(--font-mono);font-size:0.85em;background:var(--bg-page);padding:0.1em 0.4em;border-radius:3px;border:1px solid var(--border)">scikit-learn</code> library. Let's start with the model initialization:</p>
+
+        <div class="code-wrap reveal">
+            <div class="code-header">
+                <div class="code-dots">
+                    <div class="code-dot code-dot-r"></div>
+                    <div class="code-dot code-dot-y"></div>
+                    <div class="code-dot code-dot-g"></div>
+                </div>
+                <span class="code-lang">Python</span>
+            </div>
+            <div class="code-body"><pre><code><span class="kw">from</span> sklearn.cluster <span class="kw">import</span> KMeans
+
+<span class="cm"># Initialize KMeans with 2 clusters</span>
+kmeans = <span class="fn">KMeans</span>(n_clusters=<span class="nm">2</span>, n_init=<span class="st">'auto'</span>, random_state=<span class="nm">42</span>)</code></pre></div>
+        </div>
+
+        <p>Key parameters explained:</p>
+        <ul>
+            <li><strong><code style="font-family:var(--font-mono);font-size:0.85em">n_clusters=2</code></strong> — the number of clusters K to form. Default in scikit-learn is 8.</li>
+            <li><strong><code style="font-family:var(--font-mono);font-size:0.85em">n_init='auto'</code></strong> — controls how many times the algorithm restarts with different centroid seeds to avoid local minima. With <code style="font-family:var(--font-mono);font-size:0.85em">k-means++</code> (default init), it runs once; with <code style="font-family:var(--font-mono);font-size:0.85em">'random'</code>, it runs 10 times.</li>
+            <li><strong><code style="font-family:var(--font-mono);font-size:0.85em">random_state=42</code></strong> — seeds the random number generator so results are reproducible.</li>
+        </ul>
+
+        <div class="code-wrap reveal">
+            <div class="code-header">
+                <div class="code-dots">
+                    <div class="code-dot code-dot-r"></div>
+                    <div class="code-dot code-dot-y"></div>
+                    <div class="code-dot code-dot-g"></div>
+                </div>
+                <span class="code-lang">Python · Data Loading & EDA</span>
+            </div>
+            <div class="code-body"><pre><code><span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+
+df = pd.<span class="fn">read_csv</span>(<span class="st">'city_lifestyle_dataset.csv'</span>)
+
+<span class="cm"># Quick EDA</span>
+df.<span class="fn">head</span>()
+df.<span class="fn">shape</span>
+df.<span class="fn">isnull</span>().<span class="fn">sum</span>()
+df.<span class="fn">dtypes</span>
+
+<span class="cm"># Drop non-numeric identifier columns</span>
+data = df.<span class="fn">drop</span>(columns=[<span class="st">'city_name'</span>, <span class="st">'country'</span>])
+data.<span class="fn">describe</span>()</code></pre></div>
+        </div>
+
+        <!-- Scaling -->
+        <h2 id="scaling"><span class="h-num">04</span> Why Feature Scaling Matters</h2>
+        <p>K-Means uses <strong>Euclidean distance</strong> to assign points to clusters. Features with larger ranges will dominate the calculation, skewing results.</p>
+
+        <div class="table-wrap reveal">
+            <table>
+                <thead><tr><th>Feature</th><th>Range</th><th>Std Dev</th><th>Impact Without Scaling</th></tr></thead>
+                <tbody>
+                    <tr><td><code style="font-family:var(--font-mono);font-size:0.82em">population_density</code></td><td>100 – 14,427</td><td>~2,983</td><td style="color:#991b1b;font-weight:600">Dominates distance</td></tr>
+                    <tr><td><code style="font-family:var(--font-mono);font-size:0.82em">happiness_score</code></td><td>2.5 – 8.5</td><td>~1.69</td><td style="color:#065f46;font-weight:600">Effectively ignored</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>By applying <strong>StandardScaler</strong>, all features are brought to mean 0 and std 1, ensuring equal contribution to the distance metric.</p>
+
+        <div class="code-wrap reveal">
+            <div class="code-header">
+                <div class="code-dots">
+                    <div class="code-dot code-dot-r"></div>
+                    <div class="code-dot code-dot-y"></div>
+                    <div class="code-dot code-dot-g"></div>
+                </div>
+                <span class="code-lang">Python · Feature Scaling</span>
+            </div>
+            <div class="code-body"><pre><code><span class="kw">from</span> sklearn.preprocessing <span class="kw">import</span> StandardScaler
+
+scaler = <span class="fn">StandardScaler</span>()
+X_scaled = scaler.<span class="fn">fit_transform</span>(data)</code></pre></div>
+        </div>
+
+        <!-- K=3 -->
+        <h2 id="k3"><span class="h-num">05</span> K-Means with K = 3</h2>
+        <p>We start with 3 clusters for demonstration. After fitting, we visualize using the first two features and then PCA-reduced dimensions.</p>
+
+        <div class="code-wrap reveal">
+            <div class="code-header">
+                <div class="code-dots">
+                    <div class="code-dot code-dot-r"></div>
+                    <div class="code-dot code-dot-y"></div>
+                    <div class="code-dot code-dot-g"></div>
+                </div>
+                <span class="code-lang">Python · Model Fitting</span>
+            </div>
+            <div class="code-body"><pre><code>kmeans3 = <span class="fn">KMeans</span>(n_clusters=<span class="nm">3</span>, n_init=<span class="st">'auto'</span>, random_state=<span class="nm">42</span>)
+kmeans3.<span class="fn">fit</span>(X_scaled)
+
+labels = kmeans3.labels_
+cluster_centers = kmeans3.cluster_centers_</code></pre></div>
+        </div>
+
+        <h3>Visualization: Two Features vs. PCA</h3>
+        <p>Plotting Population Density vs. Avg Income first, then using PCA to collapse all features to 2 dimensions for a more representative view.</p>
+
+        <div class="code-wrap reveal">
+            <div class="code-header">
+                <div class="code-dots"><div class="code-dot code-dot-r"></div><div class="code-dot code-dot-y"></div><div class="code-dot code-dot-g"></div></div>
+                <span class="code-lang">Python · Scatter Plot</span>
+            </div>
+            <div class="code-body"><pre><code>plt.<span class="fn">figure</span>(figsize=(<span class="nm">8</span>, <span class="nm">6</span>))
+plt.<span class="fn">scatter</span>(X_scaled[:, <span class="nm">0</span>], X_scaled[:, <span class="nm">1</span>], c=labels, cmap=<span class="st">'viridis'</span>, s=<span class="nm">50</span>)
+plt.<span class="fn">scatter</span>(cluster_centers[:, <span class="nm">0</span>], cluster_centers[:, <span class="nm">1</span>],
+            c=<span class="st">'red'</span>, s=<span class="nm">200</span>, alpha=<span class="nm">0.75</span>, marker=<span class="st">'X'</span>)
+plt.<span class="fn">xlabel</span>(<span class="st">'Population Density (Scaled)'</span>)
+plt.<span class="fn">ylabel</span>(<span class="st">'Avg Income (Scaled)'</span>)
+plt.<span class="fn">title</span>(<span class="st">'K-Means Clustering (Two Features)'</span>)
+plt.<span class="fn">show</span>()</code></pre></div>
+        </div>
+
+        <!-- IMAGE: Two-feature scatter -->
+        <div class="figure reveal">
+            <!--
+                REPLACE the placeholder below with a real <img> tag once you have the image:
+                <img src="images/kmeans_scatter_2features.png" alt="K-Means scatter plot — two features">
+
+                Save the image from your notebook (plt.savefig('images/kmeans_scatter_2features.png', dpi=150, bbox_inches='tight'))
+                and push to your repo's images/ folder.
+            -->
+            <div class="figure-placeholder">
+                <i class="fa fa-chart-scatter"></i>
+                <span>K-Means Scatter Plot — Population Density vs. Avg Income<br>
+                <em>Replace with: <code style="font-size:0.9em">images/kmeans_scatter_2features.png</code></em></span>
+            </div>
+            <p class="figure-caption"><strong>Figure 1.</strong> K-Means clusters plotted on two raw scaled features. Red × markers indicate cluster centroids.</p>
+        </div>
+
+        <div class="code-wrap reveal">
+            <div class="code-header">
+                <div class="code-dots"><div class="code-dot code-dot-r"></div><div class="code-dot code-dot-y"></div><div class="code-dot code-dot-g"></div></div>
+                <span class="code-lang">Python · PCA Visualization</span>
+            </div>
+            <div class="code-body"><pre><code><span class="kw">from</span> sklearn.decomposition <span class="kw">import</span> PCA
+
+pca = <span class="fn">PCA</span>(n_components=<span class="nm">2</span>)
+X_pca = pca.<span class="fn">fit_transform</span>(X_scaled)
+
+plt.<span class="fn">scatter</span>(X_pca[:, <span class="nm">0</span>], X_pca[:, <span class="nm">1</span>], c=labels, cmap=<span class="st">'viridis'</span>, s=<span class="nm">50</span>)
+plt.<span class="fn">scatter</span>(pca.<span class="fn">transform</span>(cluster_centers)[:, <span class="nm">0</span>],
+            pca.<span class="fn">transform</span>(cluster_centers)[:, <span class="nm">1</span>],
+            c=<span class="st">'red'</span>, s=<span class="nm">200</span>, alpha=<span class="nm">0.75</span>, marker=<span class="st">'X'</span>)
+plt.<span class="fn">title</span>(<span class="st">'K-Means Clustering (PCA Reduced)'</span>)
+plt.<span class="fn">show</span>()</code></pre></div>
+        </div>
+
+        <!-- IMAGE: PCA -->
+        <div class="figure reveal">
+            <!--
+                Replace with: <img src="images/kmeans_pca.png" alt="K-Means PCA visualization">
+            -->
+            <div class="figure-placeholder">
+                <i class="fa fa-diagram-project"></i>
+                <span>PCA-Reduced Cluster Visualization<br>
+                <em>Replace with: <code style="font-size:0.9em">images/kmeans_pca.png</code></em></span>
+            </div>
+            <p class="figure-caption"><strong>Figure 2.</strong> All features compressed to 2 principal components. This gives a more holistic view of cluster separation than any single pair of features.</p>
+        </div>
+
+        <!-- Heatmap -->
+        <h3>Interpreting Centroids via Heatmap</h3>
+        <p>Since we applied <strong>StandardScaler</strong>, centroid values above 0 mean that feature is <em>above</em> the dataset average; below 0 means <em>below</em> average.</p>
+
+        <div class="code-wrap reveal">
+            <div class="code-header">
+                <div class="code-dots"><div class="code-dot code-dot-r"></div><div class="code-dot code-dot-y"></div><div class="code-dot code-dot-g"></div></div>
+                <span class="code-lang">Python · Centroid Heatmap</span>
+            </div>
+            <div class="code-body"><pre><code><span class="kw">import</span> seaborn <span class="kw">as</span> sns
+
+sns.<span class="fn">heatmap</span>(cluster_centers3, annot=<span class="kw">True</span>, cmap=<span class="st">'RdBu'</span>)</code></pre></div>
+        </div>
+
+        <!-- IMAGE: Heatmap -->
+        <div class="figure reveal">
+            <!--
+                Replace with: <img src="images/kmeans_heatmap_k3.png" alt="Centroid heatmap K=3">
+            -->
+            <div class="figure-placeholder">
+                <i class="fa fa-table-cells"></i>
+                <span>Centroid Heatmap (K=3)<br>
+                <em>Replace with: <code style="font-size:0.9em">images/kmeans_heatmap_k3.png</code></em></span>
+            </div>
+            <p class="figure-caption"><strong>Figure 3.</strong> Heatmap of standardized centroid values. Blue = above average, Red = below average.</p>
+        </div>
+
+        <!-- Cluster table K=3 -->
+        <div class="table-wrap reveal">
+            <table>
+                <thead><tr><th>Cluster</th><th>Name</th><th>Key Characteristics</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge badge-0">Cluster 0</span></td>
+                        <td><strong>High-Density Urban Stress Zones</strong></td>
+                        <td>High population density (1.467) and high air pollution (1.039). Below-average income, rent, happiness, and green space.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-1">Cluster 1</span></td>
+                        <td><strong>Low-Income Underserved Regions</strong></td>
+                        <td>Low income, internet penetration, and rent (all &lt; −1). Slightly above-average air quality. Low transport and happiness scores.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-3">Cluster 2</span></td>
+                        <td><strong>Affluent High-Quality Living Areas</strong></td>
+                        <td>Above-average income, internet, rent, happiness, and transport. Lower population density and better air quality (−0.692).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Elbow -->
+        <h2 id="elbow"><span class="h-num">06</span> Finding the Optimal K — Elbow Method</h2>
+        <p><strong>Inertia</strong> measures how compact clusters are — the sum of squared distances between each point and its centroid. K-Means minimizes this. Since inertia always decreases as K grows, we use the <strong>Elbow Method</strong> to find the inflection point where additional clusters yield diminishing returns.</p>
+
+        <div class="insight reveal">
+            <div class="insight-label"><i class="fa fa-lightbulb"></i> Key Observation</div>
+            <p>With K=2, inertia = 1411.05. Increasing to K=3 drops it to 1036 — a meaningful gain. Beyond K=5, improvements become marginal. Two candidate elbows appear at <strong>K=3</strong> and <strong>K=5</strong>.</p>
+        </div>
+
+        <div class="code-wrap reveal">
+            <div class="code-header">
+                <div class="code-dots"><div class="code-dot code-dot-r"></div><div class="code-dot code-dot-y"></div><div class="code-dot code-dot-g"></div></div>
+                <span class="code-lang">Python · Elbow Method</span>
+            </div>
+            <div class="code-body"><pre><code>inertia_values = []
+k_values = <span class="fn">range</span>(<span class="nm">2</span>, <span class="nm">12</span>)
+
+<span class="kw">for</span> k <span class="kw">in</span> k_values:
+    kmeans = <span class="fn">KMeans</span>(n_clusters=k, random_state=<span class="nm">42</span>)
+    kmeans.<span class="fn">fit</span>(X_scaled)
+    inertia_values.<span class="fn">append</span>(kmeans.inertia_)
+
+plt.<span class="fn">plot</span>(k_values, inertia_values, marker=<span class="st">'o'</span>)
+plt.<span class="fn">xlabel</span>(<span class="st">'Number of Clusters (K)'</span>)
+plt.<span class="fn">ylabel</span>(<span class="st">'Inertia'</span>)
+plt.<span class="fn">title</span>(<span class="st">'Elbow Method for Optimal K'</span>)
+plt.<span class="fn">show</span>()</code></pre></div>
+        </div>
+
+        <!-- IMAGE: Elbow -->
+        <div class="figure reveal">
+            <!--
+                Replace with: <img src="images/kmeans_elbow.png" alt="Elbow method chart">
+            -->
+            <div class="figure-placeholder">
+                <i class="fa fa-chart-line"></i>
+                <span>Elbow Method — Inertia vs. K<br>
+                <em>Replace with: <code style="font-size:0.9em">images/kmeans_elbow.png</code></em></span>
+            </div>
+            <p class="figure-caption"><strong>Figure 4.</strong> The "elbow" indicates K=3 or K=5 as optimal. Adding more clusters beyond K=5 produces minimal improvement in compactness.</p>
+        </div>
+
+        <!-- Feature Engineering -->
+        <h2 id="engineering"><span class="h-num">07</span> Feature Engineering for Better Clusters</h2>
+        <p>Raw features may not capture the true structure of the data. We create <strong>composite features</strong> that encode domain knowledge about livability and economic efficiency:</p>
+
+        <div class="code-wrap reveal">
+            <div class="code-header">
+                <div class="code-dots"><div class="code-dot code-dot-r"></div><div class="code-dot code-dot-y"></div><div class="code-dot code-dot-g"></div></div>
+                <span class="code-lang">Python · Feature Engineering</span>
+            </div>
+            <div class="code-body"><pre><code><span class="cm"># Composite features encoding domain knowledge</span>
+data[<span class="st">'income_per_density'</span>]   = data[<span class="st">'avg_income'</span>] / data[<span class="st">'population_density'</span>]
+data[<span class="st">'rent_to_income_ratio'</span>]  = data[<span class="st">'avg_rent'</span>] / data[<span class="st">'avg_income'</span>]
+data[<span class="st">'urbanization_score'</span>]    = (
+    data[<span class="st">'population_density'</span>]    * <span class="nm">0.3</span> +
+    data[<span class="st">'public_transport_score'</span>] * <span class="nm">0.3</span> +
+    data[<span class="st">'internet_penetration'</span>]   * <span class="nm">0.2</span> -
+    data[<span class="st">'green_space_ratio'</span>]      * <span class="nm">0.2</span>)
+data[<span class="st">'quality_of_life'</span>]       = (
+    data[<span class="st">'happiness_score'</span>] + data[<span class="st">'green_space_ratio'</span>] +
+    data[<span class="st">'public_transport_score'</span>]) / <span class="nm">3</span>
+data[<span class="st">'environment_comfort'</span>]   = (
+    (<span class="nm">100</span> - data[<span class="st">'air_quality_index'</span>]) + data[<span class="st">'green_space_ratio'</span>]) / <span class="nm">2</span>
+data[<span class="st">'mobility_index'</span>]        = (
+    data[<span class="st">'public_transport_score'</span>] / data[<span class="st">'population_density'</span>])
+
+<span class="cm"># Handle infinities, scale</span>
+data.<span class="fn">replace</span>([np.inf, -np.inf], np.nan, inplace=<span class="kw">True</span>)
+data.<span class="fn">fillna</span>(data.<span class="fn">mean</span>(), inplace=<span class="kw">True</span>)
+
+features_to_scale = [<span class="st">'income_per_density'</span>, <span class="st">'rent_to_income_ratio'</span>,
+                     <span class="st">'urbanization_score'</span>, <span class="st">'quality_of_life'</span>,
+                     <span class="st">'environment_comfort'</span>, <span class="st">'mobility_index'</span>]
+
+scaler    = <span class="fn">StandardScaler</span>()
+X_scaled_v2 = scaler.<span class="fn">fit_transform</span>(data[features_to_scale])</code></pre></div>
+        </div>
+
+        <div class="insight reveal">
+            <div class="insight-label"><i class="fa fa-lightbulb"></i> Result</div>
+            <p>With engineered features, the Elbow Method now clearly suggests <strong>K=4</strong> as optimal — revealing a richer segmentation than the raw features allowed.</p>
+        </div>
+
+        <!-- IMAGE: Elbow v2 -->
+        <div class="figure reveal">
+            <!--
+                Replace with: <img src="images/kmeans_elbow_v2.png" alt="Elbow method after feature engineering">
+            -->
+            <div class="figure-placeholder">
+                <i class="fa fa-chart-line"></i>
+                <span>Elbow Method After Feature Engineering<br>
+                <em>Replace with: <code style="font-size:0.9em">images/kmeans_elbow_v2.png</code></em></span>
+            </div>
+            <p class="figure-caption"><strong>Figure 5.</strong> With composite features, a cleaner elbow emerges at K=4.</p>
+        </div>
+
+        <!-- IMAGE: Heatmap K=4 -->
+        <div class="figure reveal">
+            <!--
+                Replace with: <img src="images/kmeans_heatmap_k4.png" alt="Centroid heatmap K=4">
+            -->
+            <div class="figure-placeholder">
+                <i class="fa fa-table-cells"></i>
+                <span>Centroid Heatmap (K=4, Engineered Features)<br>
+                <em>Replace with: <code style="font-size:0.9em">images/kmeans_heatmap_k4.png</code></em></span>
+            </div>
+            <p class="figure-caption"><strong>Figure 6.</strong> Final centroid heatmap across 6 engineered features. Clearer separation between cluster profiles is visible.</p>
+        </div>
+
+        <!-- Final profiling -->
+        <h2 id="results"><span class="h-num">08</span> Final Cluster Profiles (K = 4)</h2>
+
+        <div class="table-wrap reveal">
+            <table>
+                <thead><tr><th>Cluster</th><th>Name</th><th>Key Characteristics</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge badge-0">Cluster 0</span></td>
+                        <td><strong>Stressed, High-Cost Areas</strong></td>
+                        <td>Highest <code style="font-family:var(--font-mono);font-size:0.82em">rent_to_income_ratio</code> — housing costs outpace earnings. Low environmental quality. Likely struggling smaller cities or expensive suburbs.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-1">Cluster 1</span></td>
+                        <td><strong>Elite, High-Efficiency Areas</strong></td>
+                        <td>Unparalleled <code style="font-family:var(--font-mono);font-size:0.82em">income_per_density</code> and exceptional <code style="font-family:var(--font-mono);font-size:0.82em">mobility_index</code>. Best overall living environment.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-2">Cluster 2</span></td>
+                        <td><strong>Dense, High-Congestion Metropolises</strong></td>
+                        <td>Highest <code style="font-family:var(--font-mono);font-size:0.82em">urbanization_score</code>. Extremely poor environmental comfort and overwhelmed transit infrastructure (low <code style="font-family:var(--font-mono);font-size:0.82em">mobility_index</code>).</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-3">Cluster 3</span></td>
+                        <td><strong>Balanced, Highly Livable Cities</strong></td>
+                        <td>Highest <code style="font-family:var(--font-mono);font-size:0.82em">quality_of_life</code> and <code style="font-family:var(--font-mono);font-size:0.82em">environment_comfort</code>. Moderate density and cost. Represents the ideal well-managed city.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Key takeaways -->
+        <h2 id="takeaways"><span class="h-num">09</span> Key Takeaways</h2>
+        <ul class="reveal">
+            <li><strong>Feature scaling is non-negotiable</strong> — without it, high-variance features like <code style="font-family:var(--font-mono);font-size:0.85em">population_density</code> completely dominate the distance calculation.</li>
+            <li><strong>K selection requires judgment</strong> — the Elbow Method guides but does not dictate. Domain knowledge and interpretability matter.</li>
+            <li><strong>Feature engineering unlocks richer structure</strong> — composite features encoding ratios and weighted scores produced cleaner, more meaningful clusters than raw features alone.</li>
+            <li><strong>PCA helps visualize but not model</strong> — use it for plotting cluster structure, not as input to K-Means (unless dimensionality is genuinely very high).</li>
+        </ul>
+
+        <!-- Divider -->
+        <div class="section-divider reveal"><span class="section-divider-icon"><i class="fa fa-circle"></i></span></div>
+
+        <!-- Navigation -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:3rem; flex-wrap:wrap; gap:1rem;">
+            <a href="portfolio.html" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.78rem;font-weight:600;color:var(--ink-muted);text-decoration:none;text-transform:uppercase;letter-spacing:0.08em;transition:color 0.2s;" onmouseover="this.style.color='var(--accent-dark)'" onmouseout="this.style.color='var(--ink-muted)'">
+                <i class="fa fa-arrow-left"></i> Back to Portfolio
+            </a>
+            <a href="https://github.com/suparnachowdhury" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--ink);color:var(--white);font-size:0.75rem;font-weight:600;text-decoration:none;text-transform:uppercase;letter-spacing:0.08em;padding:0.75rem 1.5rem;border-radius:var(--radius-sm);transition:background 0.2s;" onmouseover="this.style.background='var(--accent-dark)'" onmouseout="this.style.background='var(--ink)'">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+        </div>
+
+    </article>
+
+    <!-- ── TOC SIDEBAR ── -->
+    <aside class="toc-sidebar">
+        <div class="toc-label">On This Page</div>
+        <ul class="toc-list">
+            <li><a href="#what" class="toc-link">01 · What Is K-Means?</a></li>
+            <li><a href="#how" class="toc-link">02 · How It Works</a></li>
+            <li><a href="#setup" class="toc-link">03 · Python Setup</a></li>
+            <li><a href="#scaling" class="toc-link">04 · Feature Scaling</a></li>
+            <li><a href="#k3" class="toc-link">05 · K-Means (K=3)</a></li>
+            <li><a href="#elbow" class="toc-link">06 · Elbow Method</a></li>
+            <li><a href="#engineering" class="toc-link">07 · Feature Engineering</a></li>
+            <li><a href="#results" class="toc-link">08 · Final Profiles</a></li>
+            <li><a href="#takeaways" class="toc-link">09 · Takeaways</a></li>
+        </ul>
+
+        <div class="toc-github">
+            <a href="https://github.com/suparnachowdhury" target="_blank">
+                <i class="fab fa-github"></i> View Source Code
+            </a>
+            <div class="toc-github-sub">Full notebook on GitHub</div>
+        </div>
+    </aside>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div>
+        <div class="footer-name">Suparna Chowdhury</div>
+        <div class="footer-sub">Data Scientist · ML Engineer · BI Analyst</div>
+    </div>
+    <div class="footer-icons">
+        <a href="https://github.com/suparnachowdhury" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/suparna-chowdhury" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://suparnachowdhury.medium.com/" target="_blank"><i class="fab fa-medium-m"></i></a>
+        <a href="https://x.com/DataSapient" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/data_sapient/" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <div class="footer-copy">© 2026 Suparna Chowdhury. All rights reserved.</div>
+</footer>
+
+<script>
+    // Nav hamburger
+    const navBtn = document.getElementById('navBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    navBtn.addEventListener('click', () => mobileNav.classList.toggle('open'));
+    function closeNav() { mobileNav.classList.remove('open'); }
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // TOC active link highlight
+    const headings = document.querySelectorAll('h2[id], h3[id]');
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const tocObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                tocLinks.forEach(l => l.classList.remove('toc-active'));
+                const active = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+                if (active) active.classList.add('toc-active');
+            }
+        });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    headings.forEach(h => tocObserver.observe(h));
+</script>
+
+</body>
+</html>
