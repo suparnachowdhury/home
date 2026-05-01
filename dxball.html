@@ -1,0 +1,430 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Paddle Game — Suparna Chowdhury</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root {
+            --white:       #ffffff;
+            --bg-page:     #F7F8FC;
+            --bg-alt:      #f0f8ff;
+            --accent:      #72f3c8;
+            --accent-dark: #0d9e78;
+            --accent-soft: #e4fdf5;
+            --ink:         #111827;
+            --ink-mid:     #374151;
+            --ink-muted:   #6B7280;
+            --ink-faint:   #9CA3AF;
+            --border:      #e5e7eb;
+            --border-mid:  #d1d5db;
+            --code-bg:     #0f1117;
+            --code-fg:     #e2e8f0;
+            --radius-sm:   4px;
+            --radius-md:   8px;
+            --radius-lg:   14px;
+            --shadow-sm:   0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md:   0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg:   0 8px 32px rgba(0,0,0,0.10);
+            --font-serif:  'Lora', Georgia, serif;
+            --font-sans:   'Inter', system-ui, sans-serif;
+            --font-mono:   'JetBrains Mono', 'Courier New', monospace;
+            --nav-h:       68px;
+            --article-w:   740px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-page);
+            color: var(--ink);
+            font-size: 16px;
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+
+ /* ── NAV ── */
+        nav {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 200;
+            height: var(--nav-h);
+            background: rgba(247,248,252,0.96);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+        }
+        .nav-left {
+            display: flex; align-items: center; gap: 0.85rem; text-decoration: none;
+        }
+        .nav-avatar {
+            width: 36px; height: 36px; border-radius: 50%;
+            object-fit: cover; border: 2px solid var(--accent);
+            display: block; flex-shrink: 0;
+        }
+        .nav-logo {
+            font-family: var(--font-serif); font-size: 1.1rem;
+            color: var(--ink); text-decoration: none; font-weight: 600; white-space: nowrap;
+        }
+        .nav-logo span { color: var(--accent-dark); }
+        .nav-links { display: flex; align-items: center; gap: 0.15rem; list-style: none; }
+        .nav-links a {
+            color: var(--ink-muted); text-decoration: none; font-size: 0.78rem;
+            font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+            padding: 0.42rem 0.8rem; border-radius: var(--radius-sm);
+            transition: color 0.18s, background 0.18s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--ink); background: var(--border); }
+        .nav-cta {
+            background: var(--ink) !important; color: var(--white) !important;
+            border-radius: var(--radius-sm) !important; margin-left: 0.5rem;
+        }
+        .nav-cta:hover { background: var(--accent-dark) !important; color: var(--white) !important; }
+        .nav-hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            background: none; border: none; cursor: pointer; padding: 4px;
+        }
+        .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--ink); }
+        .mobile-nav {
+            display: none; position: fixed; inset: var(--nav-h) 0 0;
+            background: var(--white); z-index: 199; flex-direction: column;
+            padding: 2rem 6%; border-top: 1px solid var(--border); overflow-y: auto;
+        }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a {
+            color: var(--ink-mid); text-decoration: none; font-size: 0.82rem;
+            font-weight: 500; padding: 0.9rem 0; border-bottom: 1px solid var(--border);
+            letter-spacing: 0.04em; text-transform: uppercase;
+        }
+
+/* ===== LAYOUT ===== */
+.container{
+  padding-top:100px;
+  max-width:900px;
+  margin:auto;
+  padding-left:20px;
+  padding-right:20px;
+}
+
+h2{
+  font-family:Lora,serif;
+  border-top:2px solid var(--accent);
+  padding-top:15px;
+}
+
+/* ===== GAME ===== */
+canvas{
+  background:#0f1117;
+  display:block;
+  margin:20px auto;
+  border-radius:12px;
+  border:1px solid #333;
+}
+
+/* ── FOOTER ── */
+        footer {
+            background: var(--ink); color: rgba(255,255,255,0.45);
+            padding: 3rem 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1.5rem;
+        }
+        .footer-name { font-family: var(--font-serif); color: var(--white); font-size: 1rem; margin-bottom: 0.15rem; font-weight: 600; }
+        .footer-sub { font-size: 0.76rem; }
+        .footer-icons { display: flex; gap: 0.65rem; }
+        .footer-icons a {
+            width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.78rem;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .footer-icons a:hover { border-color: var(--accent); color: var(--accent); }
+        .footer-copy { font-size: 0.7rem; }
+
+        /* ── REVEAL ── */
+        .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1100px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: flex; }
+            .article-layout { grid-template-columns: 1fr; gap: 0; }
+            .toc-sidebar { display: none; }
+        }
+        @media (max-width: 600px) {
+            .article-hero { padding-left: 5%; padding-right: 5%; }
+            .article-layout { padding: 2.5rem 5% 4rem; }
+            footer { flex-direction: column; align-items: flex-start; }
+        }
+</style>
+</head>
+
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+    <a href="index.html" class="nav-left">
+        <img src="images/profile_picture.png" alt="Suparna Chowdhury" class="nav-avatar">
+        <span class="nav-logo">Suparna <span>Chowdhury</span></span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutme.html">About Me</a></li>
+        <li><a href="portfolio.html" class="active">Portfolio</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="https://suparnachowdhury.medium.com/" target="_blank">Blog</a></li>
+        <li><a href="https://linkedin.com/in/suparna-chowdhury" target="_blank" class="nav-cta">Connect</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- ===== CONTENT ===== -->
+<div class="container">
+
+<h2>DX Ball Game</h2>
+<p>
+Arrow keys or mouse. Catch power-ups:
+<b>W</b> wide paddle, <b>L</b> life, <b>S</b> slow, <b>F</b> fast, <b>M</b> multi-ball, <b>C</b> color.
+</p>
+<div id="startScreen" style="
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  background:rgba(0,0,0,0.85);
+  color:white;
+  z-index:2000;
+">
+
+  <h1>DX Ball Game</h1>
+  <button id="startBtn" style="
+    padding:12px 24px;
+    font-size:16px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    background:#72f3c8;
+    color:#000;
+    font-weight:bold;
+  ">
+    Start Game
+  </button>
+
+</div>
+<canvas id="gameCanvas" width="700" height="400"></canvas>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div>
+        <div class="footer-name">Suparna Chowdhury</div>
+        <div class="footer-sub">Data Scientist · ML Engineer · BI Analyst</div>
+    </div>
+    <div class="footer-icons">
+        <a href="https://github.com/suparnachowdhury" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/suparna-chowdhury" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://suparnachowdhury.medium.com/" target="_blank"><i class="fab fa-medium-m"></i></a>
+        <a href="https://x.com/DataSapient" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/data_sapient/" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <div class="footer-copy">© 2026 Suparna Chowdhury. All rights reserved.</div>
+</footer>
+
+<!-- ===== GAME SCRIPT ===== -->
+<script>
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+// ===== GAME STATE =====
+let gameStarted = false;
+let balls = [{x:350,y:300,dx:3,dy:-3,color:"#72f3c8"}];
+let paddle = {x:300,width:100,height:10};
+let score = 0;
+let lives = 3;
+let level = 1;
+
+
+let powerUps = [];
+const types = ["wide","life","slow","fast","multi","color"];
+
+// ===== BRICKS =====
+const rows=5, cols=8;
+let bricks=[];
+
+function init(){
+  bricks=[];
+  for(let c=0;c<cols;c++){
+    bricks[c]=[];
+    for(let r=0;r<rows;r++){
+      bricks[c][r]={x:0,y:0,status:1};
+    }
+  }
+}
+init();
+
+// ===== INPUT =====
+document.addEventListener("mousemove",(e)=>{
+  let r = canvas.getBoundingClientRect();
+  paddle.x = e.clientX - r.left - paddle.width/2;
+});
+
+document.getElementById("startBtn").addEventListener("click",()=>{
+  gameStarted = true;
+  document.getElementById("startScreen").style.display = "none";
+});
+
+// ===== POWERUPS =====
+function spawn(x,y){
+  powerUps.push({
+    x,y,
+    type:types[Math.floor(Math.random()*types.length)]
+  });
+}
+
+function apply(t){
+  if(t==="wide") paddle.width+=30;
+  if(t==="life") lives++;
+  if(t==="slow") balls.forEach(b=>{b.dx*=0.8;b.dy*=0.8});
+  if(t==="fast") balls.forEach(b=>{b.dx*=1.2;b.dy*=1.2});
+  if(t==="multi") balls.push({...balls[0]});
+  if(t==="color") balls.forEach(b=>b.color=`hsl(${Math.random()*360},80%,60%)`);
+}
+
+// ===== DRAW =====
+function drawBall(b){
+  ctx.fillStyle=b.color;
+  ctx.beginPath();
+  ctx.arc(b.x,b.y,8,0,Math.PI*2);
+  ctx.fill();
+}
+
+function drawPaddle(){
+  ctx.fillStyle="#00ffff";
+  ctx.fillRect(paddle.x,canvas.height-15,paddle.width,10);
+}
+
+function drawBricks(){
+  for(let c=0;c<cols;c++){
+    for(let r=0;r<rows;r++){
+      let b=bricks[c][r];
+      if(b.status){
+        let x=c*80+30;
+        let y=r*30+40;
+        b.x=x;b.y=y;
+        ctx.fillStyle=`hsl(${r*60},80%,50%)`;
+        ctx.fillRect(x,y,70,20);
+      }
+    }
+  }
+}
+
+function drawPower(){
+  powerUps.forEach((p,i)=>{
+    p.y+=2;
+    ctx.fillStyle="yellow";
+    ctx.fillRect(p.x,p.y,10,10);
+
+    if(p.y>canvas.height-20 &&
+       p.x>paddle.x &&
+       p.x<paddle.x+paddle.width){
+      apply(p.type);
+      powerUps.splice(i,1);
+    }
+  });
+}
+
+// ===== COLLISION =====
+function collide(){
+  balls.forEach(b=>{
+    for(let c=0;c<cols;c++){
+      for(let r=0;r<rows;r++){
+        let br=bricks[c][r];
+        if(br.status &&
+           b.x>br.x && b.x<br.x+70 &&
+           b.y>br.y && b.y<br.y+20){
+
+          b.dy*=-1;
+          br.status=0;
+          score+=10;
+
+          if(Math.random()<0.3) spawn(br.x+35,br.y);
+        }
+      }
+    }
+  });
+}
+
+// ===== BALLS =====
+function updateBalls(){
+  balls.forEach((b,i)=>{
+    drawBall(b);
+
+    b.x+=b.dx;
+    b.y+=b.dy;
+
+    if(b.x<8||b.x>canvas.width-8) b.dx*=-1;
+    if(b.y<8) b.dy*=-1;
+
+    if(b.y>canvas.height-20){
+      if(b.x>paddle.x && b.x<paddle.x+paddle.width){
+        b.dy*=-1;
+      }else{
+        balls.splice(i,1);
+        if(!balls.length){
+          lives--;
+          if(lives>0){
+            balls=[{x:350,y:300,dx:3,dy:-3,color:"#72f3c8"}];
+          }else{
+            alert("Game Over: "+score);
+            location.reload();
+          }
+        }
+      }
+    }
+  });
+}
+
+// ===== LOOP =====
+function loop(){
+
+  if(!gameStarted) {
+    requestAnimationFrame(loop);
+    return;
+  }
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  drawBricks();
+  drawPaddle();
+  drawPower();
+
+  collide();
+  updateBalls();
+
+  ctx.fillStyle="#fff";
+  ctx.fillText("Score:"+score,10,20);
+  ctx.fillText("Lives:"+lives,600,20);
+
+  requestAnimationFrame(loop);
+}
+
+loop();
+</script>
+
+</body>
+</html>
